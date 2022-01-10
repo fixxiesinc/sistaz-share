@@ -34,7 +34,7 @@ class Body extends StatelessWidget {
               SizedBox(
                 width: isDesktop ? size.width * 0.1 : 0.0,
                 height: isMobile
-                    ? size.height * 0.1
+                    ? size.height * 0.06
                     : isTablet
                         ? size.width * 0.15
                         : 0.0,
