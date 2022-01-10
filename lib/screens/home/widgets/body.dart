@@ -41,7 +41,7 @@ class Body extends StatelessWidget {
               ),
               Expanded(
                 flex: isMobile
-                    ? 7
+                    ? 6
                     : isTablet
                         ? 8
                         : 3,
