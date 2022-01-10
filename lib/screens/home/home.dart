@@ -1,3 +1,4 @@
+import 'dart:html' as html;
 import 'package:flutter/material.dart';
 import 'package:sistaz_share_web/exports.dart';
 
@@ -41,13 +42,16 @@ class _HomeState extends State<Home> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Image.asset(
-                                Images.logoTextWhite,
-                                width: isMobile
-                                    ? size.width * 0.3
-                                    : isTablet
-                                        ? size.width * 0.2
-                                        : size.width * 0.12,
+                              InkWell(
+                                onTap: () => html.window.location.reload(),
+                                child: Image.asset(
+                                  Images.logoTextWhite,
+                                  width: isMobile
+                                      ? size.width * 0.3
+                                      : isTablet
+                                          ? size.width * 0.2
+                                          : size.width * 0.12,
+                                ),
                               ),
                               DotsIndicator(
                                 dotsCount: pages.length,
