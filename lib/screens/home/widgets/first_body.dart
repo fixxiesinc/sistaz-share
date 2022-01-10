@@ -34,7 +34,7 @@ class FirstBody extends StatelessWidget {
               text: 'voice',
               style: TextStyle(fontStyle: FontStyle.italic),
             ),
-            TextSpan(text: ' - we just make it louder'),
+            TextSpan(text: ' - we just make it \nlouder'),
           ],
         ),
       );
