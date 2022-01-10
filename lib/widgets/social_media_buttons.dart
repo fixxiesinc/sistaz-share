@@ -1,3 +1,4 @@
+import 'dart:js' as dartjs;
 import 'package:flutter/material.dart';
 import 'package:sistaz_share_web/exports.dart';
 
@@ -18,17 +19,17 @@ class SocialMediaButtons extends StatelessWidget {
           direction: isMobile ? Axis.vertical : Axis.horizontal,
           children: [
             InkWell(
-              onTap: () => print('TW'),
+              onTap: () => dartjs.context.callMethod('open', [Urls.twitter]),
               child: Text('TW', style: _textStyle),
             ),
             SizedBox(width: isMobile ? 0 : 30.0, height: isMobile ? 30.0 : 0),
             InkWell(
-              onTap: () => print('IG'),
+              onTap: () => dartjs.context.callMethod('open', [Urls.instagram]),
               child: Text('IG', style: _textStyle),
             ),
             SizedBox(width: isMobile ? 0 : 30.0, height: isMobile ? 30.0 : 0),
             InkWell(
-              onTap: () => print('FB'),
+              onTap: () => dartjs.context.callMethod('open', [Urls.facebook]),
               child: Text('FB', style: _textStyle),
             ),
           ],
