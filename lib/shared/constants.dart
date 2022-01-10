@@ -10,3 +10,9 @@ class Fonts {
   static const String mazzard = 'Mazzard';
   static const String autography = 'Autography';
 }
+
+class Urls {
+  static const String facebook = 'https://web.facebook.com/sistazshare';
+  static const String instagram = 'https://www.instagram.com/sistazshare/';
+  static const String twitter = 'https://twitter.com/sistazshare';
+}
