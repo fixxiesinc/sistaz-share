@@ -19,7 +19,7 @@ class SocialHandleItem extends StatelessWidget {
           border: Border.all(color: Colors.white),
         ),
         child: Text(
-          label,
+          label.toUpperCase(),
           style: const TextStyle(color: Colors.white, fontSize: 18.0),
         ),
       ),
