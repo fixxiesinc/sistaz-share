@@ -53,7 +53,7 @@ class _HomeState extends State<Home> {
                               child: Image.asset(
                                 Images.logoTextWhite,
                                 width: isMobile
-                                    ? size.width * 0.3
+                                    ? size.width * 0.35
                                     : isTablet
                                         ? size.width * 0.2
                                         : size.width * 0.12,
