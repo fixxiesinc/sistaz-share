@@ -70,10 +70,12 @@ class _HomeState extends State<Home> {
                           ),
                         ),
                       ),
-                      SizedBox(height: isMobile ? 30.0 : size.height * 0.08),
+                       SizedBox(height: isMobile ?  20.0  : 10.0),
                       Expanded(
                         child: PageView.builder(
                           itemCount: pages.length,
+                          clipBehavior: Clip.antiAlias,
+                          scrollDirection: Axis.vertical,
                           itemBuilder: (context, index) => pages[index],
                           onPageChanged: (value) {
                             setState(() => currentPage = value);
