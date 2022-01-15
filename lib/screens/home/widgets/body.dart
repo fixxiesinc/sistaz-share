@@ -12,16 +12,14 @@ class Body extends StatelessWidget {
     return ResponsiveBuilder(
       builder: (context, sizingInformation) {
         final bool isMobile = sizingInformation.isMobile;
-        final bool isDesktop = sizingInformation.isDesktop;
         final bool isTablet = sizingInformation.isTablet;
+        final bool isDesktop = sizingInformation.isDesktop;
         return Padding(
           padding: EdgeInsets.symmetric(horizontal: isMobile ? 20.0 : 40.0),
           child: Flex(
             direction: isDesktop ? Axis.horizontal : Axis.vertical,
             crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: isDesktop
-                ? MainAxisAlignment.spaceBetween
-                : MainAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Flexible(
                 child: child,
