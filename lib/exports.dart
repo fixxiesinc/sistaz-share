@@ -13,3 +13,4 @@ export 'package:sistaz_share_web/screens/home/widgets/body.dart';
 export 'package:sistaz_share_web/widgets/social_media_buttons.dart';
 export 'package:sistaz_share_web/screens/home/widgets/first_body.dart';
 export 'package:sistaz_share_web/screens/home/widgets/second_body.dart';
+export 'package:sistaz_share_web/screens/home/widgets/social_handle_item.dart';
