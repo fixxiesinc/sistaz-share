@@ -53,14 +53,17 @@ class _HomeState extends State<Home> {
                                           : size.width * 0.12,
                                 ),
                               ),
-                              DotsIndicator(
-                                dotsCount: pages.length,
-                                position: currentPage.toDouble(),
-                                decorator: DotsDecorator(
-                                  activeColor: Colors.white,
-                                  size: const Size.square(7.0),
-                                  activeSize: const Size.square(7.0),
-                                  color: Colors.grey.withOpacity(0.8),
+                              RotatedBox(
+                                quarterTurns: 1,
+                                child: DotsIndicator(
+                                  dotsCount: pages.length,
+                                  position: currentPage.toDouble(),
+                                  decorator: DotsDecorator(
+                                    activeColor: Colors.white,
+                                    size: const Size.square(7.0),
+                                    activeSize: const Size.square(7.0),
+                                    color: Colors.grey.withOpacity(0.8),
+                                  ),
                                 ),
                               )
                             ],
