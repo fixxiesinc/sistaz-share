@@ -1,7 +1,6 @@
 import 'dart:html' as html;
 import 'package:flutter/material.dart';
 import 'package:sistaz_share_web/exports.dart';
-import 'package:sistaz_share_web/screens/home/social_handles_page.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -12,34 +11,24 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   int currentPage = 0;
-  late List<Widget> pages;
+  late List<Widget> pages = const [FirstBody(), SecondBody()];
 
   @override
   Widget build(BuildContext context) {
     final Size size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Colors.black,
-      body: SizedBox(
-        height: size.height,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-              child: ResponsiveBuilder(
-                builder: (context, sizingInformation) {
-                  bool isMobile = sizingInformation.isMobile;
-                  bool isTablet = sizingInformation.isTablet;
-                  pages = isMobile
-                      ? const [
-                          Body(child: FirstBody()),
-                          Body(child: SecondBody()),
-                          SocialHandles(),
-                        ]
-                      : const [
-                          Body(child: FirstBody()),
-                          Body(child: SecondBody()),
-                        ];
-                  return Column(
+      body: ResponsiveBuilder(
+        builder: (context, sizingInformation) {
+          bool isMobile = sizingInformation.isMobile;
+          bool isTablet = sizingInformation.isTablet;
+          return SizedBox(
+            height: size.height,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Expanded(
+                  child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Padding(
@@ -77,24 +66,26 @@ class _HomeState extends State<Home> {
                       ),
                       SizedBox(height: isMobile ? 20.0 : 10.0),
                       Expanded(
-                        child: PageView.builder(
-                          itemCount: pages.length,
-                          clipBehavior: Clip.antiAlias,
-                          scrollDirection: Axis.vertical,
-                          itemBuilder: (context, index) => pages[index],
-                          onPageChanged: (value) {
-                            setState(() => currentPage = value);
-                          },
+                        child: SizedBox(
+                          height: size.height,
+                          child: PageView.builder(
+                            itemCount: pages.length,
+                            clipBehavior: Clip.antiAlias,
+                            scrollDirection: Axis.vertical,
+                            itemBuilder: (context, index) => pages[index],
+                            onPageChanged: (value) {
+                              setState(() => currentPage = value);
+                            },
+                          ),
                         ),
                       ),
                     ],
-                  );
-                },
-              ),
+                  ),
+                ),
+              ],
             ),
-            const Footer(),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
