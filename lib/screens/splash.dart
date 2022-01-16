@@ -14,7 +14,7 @@ class _SplashState extends State<Splash> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(milliseconds: 000)).then((value) {
+    Future.delayed(const Duration(milliseconds: 4000)).then((value) {
       setState(() {
         showHome = true;
       });
@@ -33,7 +33,7 @@ class _SplashState extends State<Splash> {
             )
           : Center(
               child:
-                  Image.asset(Images.logoIconWhite, height: 70.0, width: 70.0),
+                  Image.asset(Images.logoIconWhite, height: 50.0, width: 50.0),
             ),
     );
   }
