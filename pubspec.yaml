@@ -21,6 +21,9 @@ dependencies:
   # d
   delayed_display: ^2.0.0
 
+  # f
+  flutter_slider_drawer: ^2.0.0
+
   # r
   responsive_builder: ^0.4.1
 
