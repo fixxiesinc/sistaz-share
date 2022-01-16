@@ -2,8 +2,15 @@ import 'dart:html' as html;
 import 'package:flutter/material.dart';
 import 'package:sistaz_share_web/exports.dart';
 
-class Header extends StatelessWidget {
+class Header extends StatefulWidget {
   const Header({Key? key}) : super(key: key);
+
+  @override
+  State<Header> createState() => _HeaderState();
+}
+
+class _HeaderState extends State<Header> {
+  bool menuOpen = false;
 
   @override
   Widget build(BuildContext context) {
@@ -35,9 +42,12 @@ class Header extends StatelessWidget {
                             : size.width * 0.12,
                   ),
                 ),
-                const Text(
-                  'MENU',
-                  style: TextStyle(color: Colors.white),
+                InkWell(
+                  onTap: () => onMenuIconPress(),
+                  child: Text(
+                    menuOpen ? 'CLOSE' : 'MENU',
+                    style: const TextStyle(color: Colors.white),
+                  ),
                 ),
               ],
             ),
@@ -45,5 +55,16 @@ class Header extends StatelessWidget {
         );
       },
     );
+  }
+
+  void onMenuIconPress() {
+    if (menuKey.currentState!.isDrawerOpen) {
+      menuKey.currentState!.closeDrawer();
+    } else {
+      menuKey.currentState!.openDrawer();
+    }
+    setState(() {
+      menuOpen = !menuOpen;
+    });
   }
 }
