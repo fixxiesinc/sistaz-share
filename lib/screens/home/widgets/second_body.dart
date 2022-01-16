@@ -22,59 +22,62 @@ class SecondBody extends StatelessWidget {
                   ? size.width * 0.02
                   : size.width * 0.014,
         );
-        return Padding(
-          padding: EdgeInsets.symmetric(horizontal: isMobile ? 20.0 : 60.0),
-          child: SizedBox(
-            height: size.height,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: isMobile
-                      ? size.height * 0.5
-                      : isTablet
-                          ? size.height * 0.4
-                          : size.height * 0.3,
-                  child: const VerticalDivider(
-                    thickness: 1.5,
-                    color: Colors.white,
-                  ),
-                ),
-                const SizedBox(height: 20.0),
-                Text(
-                  'the new disruption',
-                  style: TextStyle(
-                    wordSpacing: 1.5,
-                    color: Colors.white,
-                    fontFamily: Fonts.autography,
-                    fontSize: isMobile
-                        ? 40.0
+        return Material(
+          color: Colors.black,
+          child: Padding(
+            padding: EdgeInsets.symmetric(horizontal: isMobile ? 20.0 : 60.0),
+            child: SizedBox(
+              height: size.height,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  SizedBox(
+                    height: isMobile
+                        ? size.height * 0.5
                         : isTablet
-                            ? size.width * 0.09
-                            : size.width * 0.06,
+                            ? size.height * 0.4
+                            : size.height * 0.3,
+                    child: const VerticalDivider(
+                      thickness: 1.5,
+                      color: Colors.white,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 60.0),
-                SizedBox(
-                  height: 40.0,
-                  child: AnimatedTextKit(
-                    repeatForever: true,
-                    pause: const Duration(milliseconds: 200),
-                    animatedTexts: [
-                      FadeAnimatedText(
-                        'COMING SOON',
-                        textStyle: _textStyle,
-                        duration: const Duration(seconds: 4),
-                      ),
-                      FadeAnimatedText(
-                        'COMMUNITY  •  MAGAZINE',
-                        textStyle: _textStyle.copyWith(color: Colors.white),
-                        duration: const Duration(seconds: 4),
-                      ),
-                    ],
+                  const SizedBox(height: 20.0),
+                  Text(
+                    'the new disruption',
+                    style: TextStyle(
+                      wordSpacing: 1.5,
+                      color: Colors.white,
+                      fontFamily: Fonts.autography,
+                      fontSize: isMobile
+                          ? 40.0
+                          : isTablet
+                              ? size.width * 0.09
+                              : size.width * 0.06,
+                    ),
                   ),
-                ),
-              ],
+                  const SizedBox(height: 60.0),
+                  SizedBox(
+                    height: 40.0,
+                    child: AnimatedTextKit(
+                      repeatForever: true,
+                      pause: const Duration(milliseconds: 200),
+                      animatedTexts: [
+                        FadeAnimatedText(
+                          'COMING SOON',
+                          textStyle: _textStyle,
+                          duration: const Duration(seconds: 4),
+                        ),
+                        FadeAnimatedText(
+                          'COMMUNITY  •  MAGAZINE',
+                          textStyle: _textStyle.copyWith(color: Colors.white),
+                          duration: const Duration(seconds: 4),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         );
