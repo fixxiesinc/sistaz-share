@@ -12,11 +12,13 @@ dependencies:
   flutter:
     sdk: flutter
 
+  # a
+  animated_text_kit: ^4.2.1
+
   # c
   cupertino_icons: ^1.0.2
 
   # d
-  dots_indicator: ^2.0.0
   delayed_display: ^2.0.0
 
   # r
