@@ -8,53 +8,55 @@ class Footer extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       top: false,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 30.0),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.end,
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.end,
-              children: [
-                Image.asset(Images.logoIconWhite, height: 20.0),
-                const SizedBox(width: 12.0),
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    Text(
-                      'COPYRIGHT SISTAZ SHARE ${DateTime.now().year}',
-                      style: const TextStyle(
-                        fontSize: 10.0,
-                        wordSpacing: 1.6,
-                        color: Colors.white,
+      child: ResponsiveBuilder(
+        builder: (context, sizingInformation) {
+          bool isMobile = sizingInformation.isMobile;
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 60.0),
+            child: FittedBox(
+              child: Row(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Image.asset(Images.logoIconWhite, height: 20.0),
+                  const SizedBox(width: 12.0),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        'COPYRIGHT SISTAZ SHARE ${DateTime.now().year}',
+                        style: const TextStyle(
+                          fontSize: 8.0,
+                          wordSpacing: 1.6,
+                          letterSpacing: 1.3,
+                          color: Colors.white,
+                        ),
                       ),
-                    ),
-                    const SizedBox(width: 12.0),
-                    Container(
-                      width: 4.0,
-                      height: 4.0,
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        shape: BoxShape.circle,
+                      const SizedBox(width: 12.0),
+                      Container(
+                        width: 4.0,
+                        height: 4.0,
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          shape: BoxShape.circle,
+                        ),
                       ),
-                    ),
-                  ],
-                ),
-                const SizedBox(width: 12.0),
-                const Text(
-                  'FROM FIXXIES',
-                  style: TextStyle(
-                    fontSize: 10.0,
-                    wordSpacing: 1.6,
-                    color: Colors.white,
+                    ],
                   ),
-                ),
-              ],
+                  const SizedBox(width: 12.0),
+                  const Text(
+                    'FROM FIXXIES',
+                    style: TextStyle(
+                      fontSize: 8.0,
+                      wordSpacing: 1.6,
+                      color: Colors.white,
+                      letterSpacing: 1.3,
+                    ),
+                  ),
+                ],
+              ),
             ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }
