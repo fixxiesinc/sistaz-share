@@ -25,7 +25,7 @@ class Home extends StatelessWidget {
               sliderMenuOpenSize: MediaQuery.of(context).size.height,
               sliderMain: ListView(
                 shrinkWrap: true,
-                children: const [FirstBody(), SecondBody()],
+                children: const [FirstBody(), MiddleLine(), SecondBody()],
               ),
             ),
           ),
