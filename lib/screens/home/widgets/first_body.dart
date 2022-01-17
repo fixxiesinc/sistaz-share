@@ -16,94 +16,66 @@ class FirstBody extends StatelessWidget {
           final bool isTablet = sizingInformation.isTablet;
           final bool isDesktop = sizingInformation.isDesktop;
           return Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: isMobile ? 20.0 : 60.0,
-              vertical: 30.0,
+            padding: EdgeInsets.only(
+              left: isMobile ? 20.0 : 60.0,
+              right: isMobile ? 20.0 : 60.0,
+              bottom: 60.0,
+              top: isMobile ? 20.0 : isTablet ? 40.0 : 60.0,
             ),
-            child: SizedBox(
-              height: size.height - (kToolbarHeight + 40),
-              child: Stack(
-                children: [
-                  Flex(
-                    direction: isDesktop ? Axis.horizontal : Axis.vertical,
-                    crossAxisAlignment: isTablet
-                        ? CrossAxisAlignment.center
-                        : CrossAxisAlignment.start,
-                    mainAxisAlignment: isDesktop
-                        ? MainAxisAlignment.spaceBetween
-                        : MainAxisAlignment.start,
+            child: Wrap(
+              direction: isDesktop ? Axis.horizontal : Axis.vertical,
+              crossAxisAlignment: isTablet
+                  ? WrapCrossAlignment.center
+                  : WrapCrossAlignment.start,
+              alignment:
+                  isDesktop ? WrapAlignment.spaceBetween : WrapAlignment.start,
+              children: [
+                RichText(
+                  text: TextSpan(
+                    text: 'Every',
+                    style: TextStyle(
+                      height: 1.3,
+                      wordSpacing: 1.5,
+                      color: Colors.white,
+                      fontFamily: Fonts.mazzard,
+                      fontSize: isMobile
+                          ? 32.0
+                          : isTablet
+                              ? size.width * 0.06
+                              : size.width * 0.035,
+                    ),
                     children: [
-                      Flexible(
-                        flex: isDesktop ? 5 : 3,
-                        child: RichText(
-                          text: TextSpan(
-                            text: 'Every',
-                            style: TextStyle(
-                              height: 1.3,
-                              wordSpacing: 1.5,
-                              color: Colors.white,
-                              fontFamily: Fonts.mazzard,
-                              fontSize: isMobile
-                                  ? 32.0
-                                  : isTablet
-                                      ? size.width * 0.06
-                                      : size.width * 0.045,
-                            ),
-                            children: [
-                              const TextSpan(
-                                text: ' woman',
-                                style: TextStyle(fontStyle: FontStyle.italic),
-                              ),
-                              isTablet
-                                  ? const TextSpan(text: ' has a ')
-                                  : const TextSpan(text: ' has a\n'),
-                              const TextSpan(
-                                text: 'voice',
-                                style: TextStyle(fontStyle: FontStyle.italic),
-                              ),
-                              isTablet
-                                  ? const TextSpan(
-                                      text: ' - we just make it louder')
-                                  : const TextSpan(
-                                      text: ' - we just make it \nlouder'),
-                            ],
-                          ),
-                        ),
+                      const TextSpan(
+                        text: ' woman',
+                        style: TextStyle(fontStyle: FontStyle.italic),
                       ),
-                      SizedBox(
-                        height: 30.0,
-                        width: isDesktop ? size.width * 0.1 : 0.0,
+                      isTablet
+                          ? const TextSpan(text: ' has a ')
+                          : const TextSpan(text: ' has a\n'),
+                      const TextSpan(
+                        text: 'voice',
+                        style: TextStyle(fontStyle: FontStyle.italic),
                       ),
-                      Expanded(
-                        flex: isMobile
-                            ? 3
-                            : isTablet
-                                ? 4
-                                : 3,
-                        child: Transform(
-                          alignment: FractionalOffset.center,
-                          transform: Matrix4.rotationY(math.pi),
-                          child: Image.asset(
-                            Images.woman,
-                            width: isMobile ? size.width : size.width * 0.3,
-                            height: isMobile ? size.width : size.width * 0.3,
-                          ),
-                        ),
-                      )
+                      isTablet
+                          ? const TextSpan(text: ' - we just make it louder')
+                          : const TextSpan(text: ' - we just make it \nlouder'),
                     ],
                   ),
-                  Align(
-                    alignment: Alignment.bottomCenter,
-                    child: SizedBox(
-                      height: isDesktop ? size.height * 0.3 : size.height * 0.2,
-                      child: const VerticalDivider(
-                        thickness: 1.5,
-                        color: Colors.white,
-                      ),
-                    ),
+                ),
+                SizedBox(
+                  height: 30.0,
+                  width: isDesktop ? size.width * 0.1 : 0.0,
+                ),
+                Transform(
+                  alignment: FractionalOffset.center,
+                  transform: Matrix4.rotationY(math.pi),
+                  child: Image.asset(
+                    Images.woman,
+                    width: isMobile ? size.width : size.width * 0.3,
+                    height: isMobile ? size.width : size.width * 0.3,
                   ),
-                ],
-              ),
+                )
+              ],
             ),
           );
         },
