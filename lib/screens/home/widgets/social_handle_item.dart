@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sistaz_share_web/exports.dart';
 
 class SocialHandleItem extends StatelessWidget {
   final String label;
@@ -8,15 +9,30 @@ class SocialHandleItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Size size = MediaQuery.of(context).size;
     return GestureDetector(
       onTap: onTap,
       child: Column(
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            label.toUpperCase(),
-            style: const TextStyle(color: Colors.white, fontSize: 18.0),
+          ResponsiveBuilder(
+            builder: (context, sizingInformation) {
+              final bool isMobile = sizingInformation.isMobile;
+              final bool isTablet = sizingInformation.isTablet;
+              return Text(
+                label.toUpperCase(),
+                style: TextStyle(
+                  color: Colors.white,
+                  letterSpacing: 1.5,
+                  fontSize: isMobile
+                      ? 14.0
+                      : isTablet
+                          ? size.width * 0.02
+                          : size.width * 0.010,
+                ),
+              );
+            },
           ),
           const SizedBox(height: 20.0),
         ],
