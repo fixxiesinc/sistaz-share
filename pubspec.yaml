@@ -24,6 +24,9 @@ dependencies:
   # f
   flutter_slider_drawer: ^2.0.0
 
+  # p
+  provider: ^6.0.2
+
   # r
   responsive_builder: ^0.4.1
 
@@ -38,6 +41,7 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/gifs/
 
   fonts:
     - family: Mazzard
