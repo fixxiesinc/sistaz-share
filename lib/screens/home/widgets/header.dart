@@ -11,6 +11,13 @@ class Header extends StatefulWidget {
 
 class _HeaderState extends State<Header> {
   bool menuOpen = false;
+  late MenuProvider menuProvider;
+
+  @override
+  void didChangeDependencies() {
+    super.didChangeDependencies();
+    menuProvider = Provider.of<MenuProvider>(context, listen: false);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -46,7 +53,11 @@ class _HeaderState extends State<Header> {
                   onTap: () => onMenuIconPress(),
                   child: Text(
                     menuOpen ? 'CLOSE' : 'MENU',
-                    style: const TextStyle(color: Colors.white),
+                    style: const TextStyle(
+                      color: Colors.white,
+                      fontSize: 12.0,
+                      letterSpacing: 2,
+                    ),
                   ),
                 ),
               ],
@@ -65,6 +76,7 @@ class _HeaderState extends State<Header> {
     }
     setState(() {
       menuOpen = !menuOpen;
+      menuProvider.toggleMenuState(menuOpen);
     });
   }
 }
