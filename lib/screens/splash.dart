@@ -32,8 +32,7 @@ class _SplashState extends State<Splash> {
               fadingDuration: Duration(milliseconds: 500),
             )
           : Center(
-              child:
-                  Image.asset(Images.logoIconWhite, height: 50.0, width: 50.0),
+              child: Image.asset(Gifs.logo, height: 200.0, width: 200.0),
             ),
     );
   }
