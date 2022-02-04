@@ -10,7 +10,6 @@ class Footer extends StatelessWidget {
       top: false,
       child: ResponsiveBuilder(
         builder: (context, sizingInformation) {
-          bool isMobile = sizingInformation.isMobile;
           return Padding(
             padding: const EdgeInsets.symmetric(vertical: 60.0),
             child: FittedBox(
