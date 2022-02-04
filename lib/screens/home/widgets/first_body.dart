@@ -20,7 +20,11 @@ class FirstBody extends StatelessWidget {
               left: isMobile ? 20.0 : 60.0,
               right: isMobile ? 20.0 : 60.0,
               bottom: 60.0,
-              top: isMobile ? 20.0 : isTablet ? 40.0 : 60.0,
+              top: isMobile
+                  ? 20.0
+                  : isTablet
+                      ? 40.0
+                      : 60.0,
             ),
             child: Wrap(
               direction: isDesktop ? Axis.horizontal : Axis.vertical,
@@ -32,7 +36,7 @@ class FirstBody extends StatelessWidget {
               children: [
                 RichText(
                   text: TextSpan(
-                    text: 'Every',
+                    text: 'An evolving zone for \nzestful',
                     style: TextStyle(
                       height: 1.3,
                       wordSpacing: 1.5,
@@ -44,21 +48,11 @@ class FirstBody extends StatelessWidget {
                               ? size.width * 0.06
                               : size.width * 0.035,
                     ),
-                    children: [
-                      const TextSpan(
-                        text: ' woman',
+                    children: const [
+                      TextSpan(
+                        text: ' women',
                         style: TextStyle(fontStyle: FontStyle.italic),
                       ),
-                      isTablet
-                          ? const TextSpan(text: ' has a ')
-                          : const TextSpan(text: ' has a\n'),
-                      const TextSpan(
-                        text: 'voice',
-                        style: TextStyle(fontStyle: FontStyle.italic),
-                      ),
-                      isTablet
-                          ? const TextSpan(text: ' - we just make it louder')
-                          : const TextSpan(text: ' - we just make it \nlouder'),
                     ],
                   ),
                 ),
