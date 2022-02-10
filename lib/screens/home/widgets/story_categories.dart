@@ -34,7 +34,7 @@ class _StoryCategoriesState extends State<StoryCategories> {
               padding: EdgeInsets.only(
                 left: index == 0
                     ? isMobile
-                        ? 10.0
+                        ? 20.0
                         : 60.0
                     : 0,
                 right: isMobile
