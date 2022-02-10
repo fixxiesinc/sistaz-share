@@ -1,6 +1,6 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:sistaz_share_web/exports.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class ThirdBody extends StatelessWidget {
   const ThirdBody({Key? key}) : super(key: key);
