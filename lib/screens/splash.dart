@@ -14,7 +14,7 @@ class _SplashState extends State<Splash> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(milliseconds: 000)).then((value) {
+    Future.delayed(const Duration(milliseconds: 4000)).then((value) {
       setState(() {
         showHome = true;
       });
