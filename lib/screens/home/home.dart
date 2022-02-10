@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sistaz_share_web/exports.dart';
+import 'package:sistaz_share_web/screens/home/widgets/second_body.dart';
 
 final GlobalKey<SliderMenuContainerState> menuKey =
     GlobalKey<SliderMenuContainerState>();
@@ -25,7 +26,13 @@ class Home extends StatelessWidget {
               sliderMenuOpenSize: MediaQuery.of(context).size.height,
               sliderMain: ListView(
                 shrinkWrap: true,
-                children: const [FirstBody(), MiddleLine(), SecondBody()],
+                children: const [
+                  FirstBody(),
+                  PageDivider(),
+                  SecondBody(),
+                  PageDivider(),
+                  ThirdBody(),
+                ],
               ),
             ),
           ),
