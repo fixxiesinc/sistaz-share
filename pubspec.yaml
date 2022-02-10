@@ -30,6 +30,9 @@ dependencies:
   # r
   responsive_builder: ^0.4.1
 
+  # t
+  transparent_image: ^2.0.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
