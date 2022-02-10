@@ -9,32 +9,35 @@ class SecondBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ResponsiveBuilder(
-      builder: (context, sizingInformation) {
+    return Material(
+      color: Colors.black,
+      child: ResponsiveBuilder(builder: (context, sizingInformation) {
         final bool isMobile = sizingInformation.isMobile;
         final bool isTablet = sizingInformation.isTablet;
-        return Material(
-          color: Colors.black,
-          child: Padding(
-            padding: EdgeInsets.only(
-              left: isMobile ? 20.0 : 60.0,
-              // right: isMobile ? 20.0 : 60.0,
-              bottom: 60.0,
-              top: isMobile
-                  ? 20.0
-                  : isTablet
-                      ? 40.0
-                      : 60.0,
-            ),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  flex: 6,
+        final bool isDesktop = sizingInformation.isDesktop;
+        return Padding(
+          padding: EdgeInsets.only(
+            bottom: 60.0,
+            top: isMobile
+                ? 20.0
+                : isTablet
+                    ? 40.0
+                    : 60.0,
+          ),
+          child: Flex(
+            direction: isDesktop ? Axis.horizontal : Axis.vertical,
+            children: [
+              Expanded(
+                flex: isDesktop ? 6 : 0,
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: isMobile ? 20.0 : 60.0,
+                  ),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      SizedBox(height: isDesktop ? 0 : 30.0),
                       RichText(
                         text: const TextSpan(
                           text: 'Our',
@@ -52,7 +55,7 @@ class SecondBody extends StatelessWidget {
                           ],
                         ),
                       ),
-                      const SizedBox(height: 30.0),
+                      SizedBox(height: isMobile ? 20.0 : 30.0),
                       Text(
                         caption,
                         style: const TextStyle(
@@ -64,13 +67,14 @@ class SecondBody extends StatelessWidget {
                     ],
                   ),
                 ),
-                const Spacer(),
-                const Expanded(flex: 6, child: StoryCategories()),
-              ],
-            ),
+              ),
+              SizedBox(height: isMobile ? 20.0 : 30.0),
+              isDesktop ? const Spacer() : Container(),
+              Expanded(flex: isDesktop ? 6 : 0, child: const StoryCategories()),
+            ],
           ),
         );
-      },
+      }),
     );
   }
 }
