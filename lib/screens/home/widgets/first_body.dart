@@ -1,4 +1,3 @@
-import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:sistaz_share_web/exports.dart';
 
@@ -60,14 +59,10 @@ class FirstBody extends StatelessWidget {
                   height: 30.0,
                   width: isDesktop ? size.width * 0.1 : 0.0,
                 ),
-                Transform(
-                  alignment: FractionalOffset.center,
-                  transform: Matrix4.rotationY(math.pi),
-                  child: Image.asset(
-                    Images.woman,
-                    width: isMobile ? size.width : size.width * 0.3,
-                    height: isMobile ? size.width : size.width * 0.3,
-                  ),
+                Image.asset(
+                  Images.woman,
+                  width: isMobile ? size.width : size.width * 0.3,
+                  height: isMobile ? size.width : size.width * 0.3,
                 )
               ],
             ),
