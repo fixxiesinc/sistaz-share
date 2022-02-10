@@ -19,4 +19,5 @@ export 'package:sistaz_share_web/screens/home/widgets/first_body.dart';
 export 'package:sistaz_share_web/screens/home/widgets/first_body.dart';
 export 'package:sistaz_share_web/screens/home/widgets/third_body.dart';
 export 'package:sistaz_share_web/screens/home/widgets/page_divider.dart';
+export 'package:sistaz_share_web/screens/home/widgets/story_categories.dart';
 export 'package:sistaz_share_web/screens/home/widgets/social_handle_item.dart';
