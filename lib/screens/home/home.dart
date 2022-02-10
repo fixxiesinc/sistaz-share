@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sistaz_share_web/exports.dart';
-import 'package:sistaz_share_web/screens/home/widgets/second_body.dart';
 
 final GlobalKey<SliderMenuContainerState> menuKey =
     GlobalKey<SliderMenuContainerState>();
