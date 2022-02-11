@@ -38,6 +38,16 @@ class SocialHandles extends StatelessWidget {
               label: 'Twitter',
               onTap: () => dartjs.context.callMethod('open', [Urls.twitter]),
             ),
+            Container(
+              color: Colors.white,
+              height: 1.5,
+              width: isMobile ? double.infinity : size.width * 0.3,
+            ),
+            const SizedBox(height: 30.0),
+            SocialHandleItem(
+              label: 'Contact',
+              onTap: () => print('Contact'),
+            ),
           ],
         );
       },
