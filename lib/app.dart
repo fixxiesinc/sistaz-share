@@ -6,15 +6,16 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(PageProvider());
     return MultiProvider(
       providers: [
         ChangeNotifierProvider<MenuProvider>(create: (_) => MenuProvider()),
       ],
-      child: MaterialApp(
+      child: GetMaterialApp(
         home: const Splash(),
         title: 'Sistaz Share',
-        theme: ThemeData(fontFamily: Fonts.mazzard),
         debugShowCheckedModeBanner: false,
+        theme: ThemeData(fontFamily: Fonts.mazzard),
       ),
     );
   }
