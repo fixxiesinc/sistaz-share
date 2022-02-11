@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sistaz_share_web/exports.dart';
-import 'package:transparent_image/transparent_image.dart';
 
 class Category {
   final Widget image;
