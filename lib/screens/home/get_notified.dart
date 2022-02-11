@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:sistaz_share_web/exports.dart';
+import 'package:another_flushbar/flushbar.dart';
+import 'package:sistaz_share_web/models/early_adopter.dart';
+import 'package:sistaz_share_web/services/database_service.dart';
 
 class GetNotified extends StatefulWidget {
   const GetNotified({Key? key}) : super(key: key);
@@ -163,21 +166,37 @@ class _GetNotifiedState extends State<GetNotified> {
                                 onTap: (startLoading, stopLoading,
                                     btnState) async {
                                   if (_formKey.currentState!.validate()) {
-                                    if (true) {
+                                    if (!detailsUploaded) {
                                       startLoading();
-                                      await Future.delayed(
-                                        const Duration(seconds: 5),
+                                      EarlyAdopter earlyAdopter = EarlyAdopter(
+                                        name: nameController.text,
+                                        country: countryController.text,
+                                        email: emailController.text,
                                       );
-                                      stopLoading();
-                                      setState(() => detailsUploaded = true);
-                                      await Future.delayed(
-                                        const Duration(seconds: 2),
+                                      var result =
+                                          await DatabaseService.addNewAdopter(
+                                        earlyAdopter,
                                       );
-                                      pageProvider.pageController.nextPage(
-                                        duration: const Duration(seconds: 1),
-                                        curve: Curves.fastLinearToSlowEaseIn,
-                                      );
-                                      pageProvider.currentPage += 1;
+                                      if (result['state']) {
+                                        stopLoading();
+                                        setState(() => detailsUploaded = true);
+                                        await Future.delayed(
+                                          const Duration(seconds: 2),
+                                        );
+                                        pageProvider.pageController.nextPage(
+                                          duration: const Duration(seconds: 1),
+                                          curve: Curves.fastLinearToSlowEaseIn,
+                                        );
+                                        pageProvider.currentPage += 1;
+                                      } else {
+                                        stopLoading();
+                                        print(result['error']);
+                                        Flushbar(
+                                          message:
+                                              'An error occurred. Please try again later',
+                                          duration: const Duration(seconds: 5),
+                                        ).show(context);
+                                      }
                                     }
                                   }
                                 },
