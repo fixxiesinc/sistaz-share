@@ -54,9 +54,9 @@ class _HeaderState extends State<Header> {
                   child: Text(
                     menuOpen ? 'CLOSE' : 'MENU',
                     style: const TextStyle(
-                      color: Colors.white,
                       fontSize: 12.0,
                       letterSpacing: 2,
+                      color: Colors.white,
                     ),
                   ),
                 ),
