@@ -23,7 +23,7 @@ class FirstBody extends StatelessWidget {
                   ? 20.0
                   : isTablet
                       ? 40.0
-                      : 60.0,
+                      : Get.height * 0.05,
             ),
             child: Wrap(
               direction: isDesktop ? Axis.horizontal : Axis.vertical,
