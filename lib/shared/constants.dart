@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:sistaz_share_web/models/category.dart';
 
 class Images {
@@ -54,3 +55,12 @@ List<Category> categories = [
   Family(),
   She(),
 ];
+
+InputDecoration textfieldDecoration = const InputDecoration(
+  enabledBorder:
+      UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
+  focusedBorder:
+      UnderlineInputBorder(borderSide: BorderSide(color: Colors.orange)),
+  disabledBorder:
+      UnderlineInputBorder(borderSide: BorderSide(color: Colors.grey)),
+);
