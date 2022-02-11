@@ -15,6 +15,7 @@ dependencies:
   # a
   animated_text_kit: ^4.2.1
   argon_buttons_flutter: ^1.1.0
+  another_flushbar: ^1.10.28
 
   # c
   cupertino_icons: ^1.0.2
