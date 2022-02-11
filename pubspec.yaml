@@ -1,5 +1,5 @@
 name: sistaz_share_web
-description: Coming soon website of Sistaz Share
+description: Sistaz Share coming soon page
 
 publish_to: "none"
 
@@ -14,15 +14,26 @@ dependencies:
 
   # a
   animated_text_kit: ^4.2.1
+  argon_buttons_flutter: ^1.1.0
 
   # c
   cupertino_icons: ^1.0.2
+  cloud_firestore: ^3.1.8
 
   # d
   delayed_display: ^2.0.0
+  dots_indicator: ^2.0.0
+  demoji: ^2.0.0
+
+  # e
+  email_validator: ^2.0.1
 
   # f
   flutter_slider_drawer: ^2.0.0
+  firebase_core: ^1.12.0
+
+  # g
+  get: ^4.6.1
 
   # p
   provider: ^6.0.2
