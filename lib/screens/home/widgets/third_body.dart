@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:sistaz_share_web/exports.dart';
-import 'package:animated_text_kit/animated_text_kit.dart';
 
 class ThirdBody extends StatelessWidget {
   const ThirdBody({Key? key}) : super(key: key);
@@ -64,31 +63,11 @@ class ThirdBody extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20.0),
-                ElevatedButton(
-                  onPressed: () => print('Tap'),
-                  child: Text(
-                    'READ & TELL STORIES',
-                    style: Theme.of(context)
-                        .textTheme
-                        .button!
-                        .copyWith(fontWeight: FontWeight.w600),
-                  ),
-                  style: ButtonStyle(
-                    backgroundColor:
-                        MaterialStateProperty.all<Color?>(Colors.white),
-                    shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                      const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.zero,
-                      ),
-                    ),
-                    padding: MaterialStateProperty.resolveWith<EdgeInsets?>(
-                      (Set<MaterialState> states) {
-                        return const EdgeInsets.symmetric(
-                          vertical: 20.0,
-                          horizontal: 30.0,
-                        );
-                      },
-                    ),
+                FilledButton(
+                  label: 'READ & TELL STORIES',
+                  onPressed: () => Get.to(
+                    () => const TellStories(),
+                    routeName: 'read-and-tell-your-stories',
                   ),
                 ),
                 const SizedBox(height: 60.0),
