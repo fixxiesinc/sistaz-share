@@ -2,7 +2,9 @@
 export 'package:get/get.dart';
 export 'package:demoji/demoji.dart';
 export 'package:provider/provider.dart';
+export 'package:firebase_core/firebase_core.dart';
 export 'package:dots_indicator/dots_indicator.dart';
+export 'package:cloud_firestore/cloud_firestore.dart';
 export 'package:email_validator/email_validator.dart';
 export 'package:delayed_display/delayed_display.dart';
 export 'package:transparent_image/transparent_image.dart';
@@ -19,6 +21,7 @@ export 'package:sistaz_share_web/models/category.dart';
 export 'package:sistaz_share_web/shared/constants.dart';
 export 'package:sistaz_share_web/screens/home/menu.dart';
 export 'package:sistaz_share_web/screens/home/home.dart';
+export 'package:sistaz_share_web/models/early_adopter.dart';
 export 'package:sistaz_share_web/widgets/filled_button.dart';
 export 'package:sistaz_share_web/widgets/required_button.dart';
 export 'package:sistaz_share_web/providers/menu_provider.dart';
