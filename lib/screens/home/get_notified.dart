@@ -153,8 +153,7 @@ class _GetNotifiedState extends State<GetNotified> {
                                         style: Theme.of(context)
                                             .textTheme
                                             .button!
-                                            .copyWith(
-                                                fontWeight: FontWeight.w600),
+                                            .copyWith(),
                                       ),
                                 loader: Container(
                                   padding: const EdgeInsets.all(10),
@@ -190,7 +189,6 @@ class _GetNotifiedState extends State<GetNotified> {
                                         pageProvider.currentPage += 1;
                                       } else {
                                         stopLoading();
-                                        print(result['error']);
                                         Flushbar(
                                           message:
                                               'An error occurred. Please try again later',
