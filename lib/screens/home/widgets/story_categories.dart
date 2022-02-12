@@ -23,72 +23,66 @@ class _StoryCategoriesState extends State<StoryCategories> {
     return ResponsiveBuilder(
       builder: (context, sizingInformation) {
         final bool isMobile = sizingInformation.isMobile;
-        return ConstrainedBox(
-          constraints: BoxConstraints(
-            // minHeight: isMobile ? size.height * 0.52 : size.height * 0.55,
-            // maxHeight: isMobile ? size.height * 0.6 : size.height * 0.55,
-            minHeight: size.height * 0.6,
-            maxHeight: size.height * 0.7,
+        final bool isTablet = sizingInformation.isTablet;
+        final bool isDesktop = sizingInformation.isDesktop;
+        return CarouselSlider(
+          options: CarouselOptions(
+            autoPlay: true,
+            autoPlayInterval: const Duration(seconds: 3),
+            pageSnapping: false,
+            height: isDesktop ? Get.height * 0.65 : Get.height * 0.55,
+            viewportFraction: isDesktop
+                ? 0.7
+                : isTablet
+                    ? 0.6
+                    : 0.9,
           ),
-          child: ListView.builder(
-            controller: _scrollController,
-            scrollDirection: Axis.horizontal,
-            itemCount: categories.length,
-            itemBuilder: (context, index) {
+          items: List.generate(
+            categories.length,
+            (index) {
               Category category = categories[index];
               return Padding(
                 padding: EdgeInsets.only(
-                  left: index == 0
-                      ? isMobile
-                          ? 20.0
-                          : 60.0
-                      : 0,
                   right: isMobile
                       ? 20.0
                       : index == categories.length - 1
                           ? 60.0
                           : 30.0,
                 ),
-                child: ConstrainedBox(
-                  constraints: BoxConstraints(
-                    maxWidth: isMobile ? size.width * 0.9 : size.height * 0.5,
-                  ),
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        child: category.image,
-                        color: Colors.grey[900],
-                        height: size.height * 0.4,
-                        width: isMobile ? size.width * 0.9 : size.height * 0.5,
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      child: category.image,
+                      color: Colors.grey[900],
+                      height: isDesktop ? Get.height * 0.5 : Get.height * 0.4,
+                      width: isMobile ? Get.width * 0.9 : Get.height * 0.7,
+                    ),
+                    const SizedBox(height: 26.0),
+                    Text(
+                      category.label,
+                      style: const TextStyle(
+                        fontSize: 26.0,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w600,
                       ),
-                      const SizedBox(height: 20.0),
-                      Text(
-                        category.label,
-                        style: const TextStyle(
-                          fontSize: 22.0,
-                          letterSpacing: 1.3,
-                          color: Colors.white,
-                          fontWeight: FontWeight.w600,
-                        ),
-                      ),
-                      const SizedBox(height: 12.0),
-                      Wrap(
-                        children: category.subCategories.map(
-                          (subCategory) {
-                            return Text(
-                              subCategory,
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .subtitle1!
-                                  .copyWith(color: Colors.white),
-                            );
-                          },
-                        ).toList(),
-                      ),
-                    ],
-                  ),
+                    ),
+                    const SizedBox(height: 8.0),
+                    Wrap(
+                      children: category.subCategories.map(
+                        (subCategory) {
+                          return Text(
+                            subCategory,
+                            style: const TextStyle(
+                              fontSize: 18.0,
+                              color: Colors.white,
+                            ),
+                          );
+                        },
+                      ).toList(),
+                    ),
+                  ],
                 ),
               );
             },
