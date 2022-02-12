@@ -34,13 +34,13 @@ class _MenuState extends State<Menu> {
                   right: isMobile ? 20.0 : 60.0,
                   bottom: 60.0,
                 ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SingleChildScrollView(
-                      controller: _scrollController,
-                      child: Column(
+                child: SingleChildScrollView(
+                  controller: _scrollController,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Column(
                         children: [
                           SizedBox(
                             height: isMobile
@@ -87,9 +87,9 @@ class _MenuState extends State<Menu> {
                           ),
                         ],
                       ),
-                    ),
-                    const Footer(),
-                  ],
+                      const Footer(),
+                    ],
+                  ),
                 ),
               ),
             );
