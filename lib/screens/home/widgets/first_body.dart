@@ -18,7 +18,6 @@ class FirstBody extends StatelessWidget {
             padding: EdgeInsets.only(
               left: isMobile ? 20.0 : 60.0,
               right: isMobile ? 20.0 : 60.0,
-              bottom: 60.0,
               top: isMobile
                   ? 20.0
                   : isTablet
