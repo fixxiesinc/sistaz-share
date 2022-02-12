@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:sistaz_share_web/exports.dart';
 
 class Header extends StatefulWidget {
-  const Header({Key? key}) : super(key: key);
+  final bool showBackButton;
+  const Header({Key? key, this.showBackButton = false}) : super(key: key);
 
   @override
   State<Header> createState() => _HeaderState();
@@ -38,17 +39,25 @@ class _HeaderState extends State<Header> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                InkWell(
-                  onTap: () => html.window.location.reload(),
-                  child: Image.asset(
-                    Images.logoTextWhite,
-                    width: isMobile
-                        ? size.width * 0.35
-                        : isTablet
-                            ? size.width * 0.2
-                            : size.width * 0.12,
-                  ),
-                ),
+                widget.showBackButton
+                    ? InkWell(
+                        onTap: () => Get.back(),
+                        child: const Icon(
+                          Icons.arrow_back,
+                          color: Colors.white,
+                        ),
+                      )
+                    : InkWell(
+                        onTap: () => html.window.location.reload(),
+                        child: Image.asset(
+                          Images.logoTextWhite,
+                          width: isMobile
+                              ? size.width * 0.35
+                              : isTablet
+                                  ? size.width * 0.2
+                                  : size.width * 0.12,
+                        ),
+                      ),
                 InkWell(
                   onTap: () => onMenuIconPress(),
                   child: Text(
