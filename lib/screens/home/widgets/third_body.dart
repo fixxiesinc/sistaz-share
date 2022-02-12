@@ -29,7 +29,6 @@ class ThirdBody extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(height: 60.0),
                 SizedBox(
                   height: 40.0,
                   child: AnimatedTextKit(
