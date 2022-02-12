@@ -15,7 +15,7 @@ class FilledButton extends StatelessWidget {
         style: Theme.of(context)
             .textTheme
             .button!
-            .copyWith(fontWeight: FontWeight.w600),
+            .copyWith(),
       ),
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.all<Color?>(Colors.white),
