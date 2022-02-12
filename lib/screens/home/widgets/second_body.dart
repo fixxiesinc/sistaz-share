@@ -16,14 +16,15 @@ class SecondBody extends StatelessWidget {
           final bool isMobile = sizingInformation.isMobile;
           final bool isTablet = sizingInformation.isTablet;
           final bool isDesktop = sizingInformation.isDesktop;
+
+          
           return Padding(
             padding: EdgeInsets.only(
-              bottom: 60.0,
               top: isMobile
                   ? 20.0
                   : isTablet
                       ? 40.0
-                      : 60.0,
+                      : 0.0,
             ),
             child: Flex(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -39,7 +40,6 @@ class SecondBody extends StatelessWidget {
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(height: isDesktop ? 0 : 30.0),
                         RichText(
                           text: const TextSpan(
                             text: 'Our',
@@ -71,7 +71,6 @@ class SecondBody extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: isMobile ? 20.0 : 30.0),
-                isDesktop ? const Spacer() : Container(),
                 Expanded(
                   flex: isDesktop ? 6 : 0,
                   child: const StoryCategories(),
