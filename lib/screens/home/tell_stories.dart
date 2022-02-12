@@ -40,13 +40,16 @@ class _TellStoriesState extends State<TellStories> {
                         ),
                       ),
                       Obx(
-                        () => DotsIndicator(
-                          dotsCount: pageProvider.pages.length,
-                          position: pageProvider.currentPage.toDouble(),
-                          decorator: DotsDecorator(
-                            spacing: const EdgeInsets.all(12.0),
-                            color: Colors.grey[800]!,
-                            activeColor: Colors.white,
+                        () => RotatedBox(
+                          quarterTurns: 1,
+                          child: DotsIndicator(
+                            dotsCount: pageProvider.pages.length,
+                            position: pageProvider.currentPage.toDouble(),
+                            decorator: DotsDecorator(
+                              color: Colors.grey[800]!,
+                              activeColor: Colors.white,
+                              spacing: const EdgeInsets.all(12.0),
+                            ),
                           ),
                         ),
                       ),
@@ -55,9 +58,14 @@ class _TellStoriesState extends State<TellStories> {
                 ),
                 Expanded(
                   child: PageView.builder(
-                    controller: pageProvider.pageController,
+                    scrollDirection: Axis.vertical,
                     itemCount: pageProvider.pages.length,
-                    physics: const NeverScrollableScrollPhysics(),
+                    controller: pageProvider.pageController,
+                    onPageChanged: (value) {
+                      value == 0
+                          ? pageProvider.currentPage--
+                          : pageProvider.currentPage++;
+                    },
                     itemBuilder: (context, index) => pageProvider.pages[index],
                   ),
                 ),
