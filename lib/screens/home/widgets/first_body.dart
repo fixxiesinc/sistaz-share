@@ -26,9 +26,8 @@ class FirstBody extends StatelessWidget {
             ),
             child: Wrap(
               direction: isDesktop ? Axis.horizontal : Axis.vertical,
-              crossAxisAlignment: isTablet
-                  ? WrapCrossAlignment.center
-                  : WrapCrossAlignment.start,
+              crossAxisAlignment:
+                  isTablet ? WrapCrossAlignment.end : WrapCrossAlignment.start,
               alignment:
                   isDesktop ? WrapAlignment.spaceBetween : WrapAlignment.start,
               children: [
@@ -60,8 +59,8 @@ class FirstBody extends StatelessWidget {
                 ),
                 Image.asset(
                   Images.woman,
-                  width: isMobile ? size.width : size.width * 0.3,
-                  height: isMobile ? size.width : size.width * 0.3,
+                  width: isMobile ? size.width * 0.8 : size.width * 0.3,
+                  height: isMobile ? size.width * 0.8 : size.width * 0.3,
                 )
               ],
             ),
