@@ -19,7 +19,6 @@ class _StoryCategoriesState extends State<StoryCategories> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return ResponsiveBuilder(
       builder: (context, sizingInformation) {
         final bool isMobile = sizingInformation.isMobile;
@@ -30,7 +29,7 @@ class _StoryCategoriesState extends State<StoryCategories> {
             autoPlay: true,
             autoPlayInterval: const Duration(seconds: 3),
             pageSnapping: false,
-            height: isDesktop ? Get.height * 0.65 : Get.height * 0.55,
+            height: isDesktop ? Get.height * 0.6 : Get.height * 0.5,
             viewportFraction: isDesktop
                 ? 0.7
                 : isTablet
@@ -63,24 +62,9 @@ class _StoryCategoriesState extends State<StoryCategories> {
                     Text(
                       category.label,
                       style: const TextStyle(
-                        fontSize: 26.0,
+                        fontSize: 30.0,
                         color: Colors.white,
-                        fontWeight: FontWeight.w600,
                       ),
-                    ),
-                    const SizedBox(height: 8.0),
-                    Wrap(
-                      children: category.subCategories.map(
-                        (subCategory) {
-                          return Text(
-                            subCategory,
-                            style: const TextStyle(
-                              fontSize: 18.0,
-                              color: Colors.white,
-                            ),
-                          );
-                        },
-                      ).toList(),
                     ),
                   ],
                 ),
