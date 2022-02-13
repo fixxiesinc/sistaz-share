@@ -23,7 +23,7 @@ class SocialHandles extends StatelessWidget {
               color: Colors.white,
               width: isMobile ? double.infinity : size.width * 0.3,
             ),
-            const SizedBox(height: 30.0),
+            const SizedBox(height: 20.0),
             SocialHandleItem(
               label: 'Facebook',
               onTap: () => dartjs.context.callMethod('open', [Urls.facebook]),
@@ -33,7 +33,7 @@ class SocialHandles extends StatelessWidget {
               color: Colors.white,
               width: isMobile ? double.infinity : size.width * 0.3,
             ),
-            const SizedBox(height: 30.0),
+            const SizedBox(height: 20.0),
             SocialHandleItem(
               label: 'Twitter',
               onTap: () => dartjs.context.callMethod('open', [Urls.twitter]),
@@ -43,7 +43,7 @@ class SocialHandles extends StatelessWidget {
               color: Colors.white,
               width: isMobile ? double.infinity : size.width * 0.3,
             ),
-            const SizedBox(height: 30.0),
+            const SizedBox(height: 20.0),
             SocialHandleItem(
               label: 'Contact',
               onTap: () => Get.to(() => const GetInTouch()),
