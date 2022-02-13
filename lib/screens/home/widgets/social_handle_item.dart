@@ -16,23 +16,12 @@ class SocialHandleItem extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          ResponsiveBuilder(
-            builder: (context, sizingInformation) {
-              final bool isMobile = sizingInformation.isMobile;
-              final bool isTablet = sizingInformation.isTablet;
-              return Text(
-                label.toUpperCase(),
-                style: TextStyle(
-                  color: Colors.white,
-                  letterSpacing: 1.5,
-                  fontSize: isMobile
-                      ? 14.0
-                      : isTablet
-                          ? size.width * 0.02
-                          : size.width * 0.010,
-                ),
-              );
-            },
+          Text(
+            label.toUpperCase(),
+            style: Theme.of(context)
+                .textTheme
+                .headline6!
+                .copyWith(color: Colors.white),
           ),
           const SizedBox(height: 20.0),
         ],
