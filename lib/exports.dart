@@ -16,7 +16,6 @@ export 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 
 // local
 export 'package:sistaz_share_web/app.dart';
-export 'package:sistaz_share_web/widgets/footer.dart';
 export 'package:sistaz_share_web/screens/splash.dart';
 export 'package:sistaz_share_web/models/category.dart';
 export 'package:sistaz_share_web/shared/constants.dart';
