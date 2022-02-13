@@ -38,56 +38,45 @@ class _MenuState extends State<Menu> {
                   controller: _scrollController,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Column(
-                        children: [
-                          SizedBox(
-                            height: isMobile
-                                ? 20.0
-                                : isTablet
-                                    ? 40.0
-                                    : Get.height * 0.05,
-                          ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              RichText(
-                                text: TextSpan(
-                                  text: 'Coming',
-                                  style: TextStyle(
-                                    color: Colors.orange,
-                                    fontFamily: Fonts.mazzard,
-                                    fontSize: isMobile
-                                        ? 32.0
-                                        : isTablet
-                                            ? size.width * 0.06
-                                            : size.width * 0.045,
-                                  ),
-                                  children: const [
-                                    TextSpan(
-                                      text: ' soon',
-                                      style: TextStyle(
-                                          fontStyle: FontStyle.italic),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              const SizedBox(height: 40.0),
-                              const SocialHandles(),
-                              const SizedBox(height: 40.0),
-                              FilledButton(
-                                label: 'READ & TELL STORIES',
-                                onPressed: () => Get.to(
-                                  () => const TellStories(),
-                                  routeName: 'read-and-tell-your-stories',
-                                ),
-                              ),
-                            ],
-                          ),
-                        ],
+                      SizedBox(
+                        height: isMobile
+                            ? 20.0
+                            : isTablet
+                                ? 40.0
+                                : Get.height * 0.05,
                       ),
-                      const Footer(),
+                      RichText(
+                        text: TextSpan(
+                          text: 'Coming',
+                          style: TextStyle(
+                            color: Colors.orange,
+                            fontFamily: Fonts.mazzard,
+                            fontSize: isMobile
+                                ? 32.0
+                                : isTablet
+                                    ? size.width * 0.06
+                                    : size.width * 0.045,
+                          ),
+                          children: const [
+                            TextSpan(
+                              text: ' soon',
+                              style: TextStyle(
+                                  fontStyle: FontStyle.italic),
+                            ),
+                          ],
+                        ),
+                      ),
+                      const SizedBox(height: 40.0),
+                      const SocialHandles(),
+                      const SizedBox(height: 40.0),
+                      FilledButton(
+                        label: 'READ & TELL STORIES',
+                        onPressed: () => Get.to(
+                          () => const TellStories(),
+                          routeName: 'read-and-tell-your-stories',
+                        ),
+                      ),
                     ],
                   ),
                 ),
