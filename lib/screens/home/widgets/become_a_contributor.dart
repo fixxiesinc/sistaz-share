@@ -1,21 +1,50 @@
 import 'package:flutter/material.dart';
 import 'package:sistaz_share_web/exports.dart';
 
-class BecomeAContributor extends StatelessWidget {
+class BecomeAContributor extends StatefulWidget {
   const BecomeAContributor({Key? key}) : super(key: key);
 
+  @override
+  State<BecomeAContributor> createState() => _BecomeAContributorState();
+}
+
+class _BecomeAContributorState extends State<BecomeAContributor> {
   final String firstCaption =
-      '''Sistaz Share is an outlet for writers and creators who identify with women's empowerment. Our broad content scope embraces diverse perspectives and knowledge fields from across the globe.''';
+      '''Sistaz Share is an outlet for writers and creators who identify with women's empowerment. Our broad content scope embraces diverse perspectives and knowledge fields from across the globe. We encourage everyone - especially women folk - to share their stories and articles''';
+
   final String secondCaption =
-      '''We encourage everyone - especially women folk - to share their stories and articles''';
-  final String thirdCaption =
       '''Join us now - write to us about yourself, your skills and interests in empowering women''';
 
   final TextStyle _captionStyle = const TextStyle(
     height: 1.3,
-    fontSize: 18.0,
+    fontSize: 19.0,
+    letterSpacing: 0.3,
     color: Colors.white,
+    fontFamily: Fonts.mazzard,
   );
+
+  final PageProvider pageProvider = Get.find();
+  final ScrollController scrollController = ScrollController();
+
+  @override
+  void dispose() {
+    scrollController.dispose();
+    super.dispose();
+  }
+
+  @override
+  void didChangeDependencies() {
+    scrollController.addListener(() {
+      if (scrollController.offset <=
+              scrollController.position.minScrollExtent &&
+          !scrollController.position.outOfRange) {
+        pageProvider.pageController.previousPage(
+            duration: const Duration(seconds: 1),
+            curve: Curves.fastLinearToSlowEaseIn);
+      }
+    });
+    super.didChangeDependencies();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,6 +61,9 @@ class BecomeAContributor extends StatelessWidget {
               right: isMobile ? 20.0 : 60.0,
             ),
             child: SingleChildScrollView(
+              controller: scrollController,
+              // physics: const NeverScrollableScrollPhysics(),
+              physics: const ClampingScrollPhysics(),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -52,7 +84,7 @@ class BecomeAContributor extends StatelessWidget {
                           text: TextSpan(
                             text: 'Become a contributor',
                             style:
-                                Theme.of(context).textTheme.headline4!.copyWith(
+                                Theme.of(context).textTheme.headline5!.copyWith(
                                       color: Colors.white,
                                       fontFamily: Fonts.mazzard,
                                     ),
@@ -67,16 +99,20 @@ class BecomeAContributor extends StatelessWidget {
                         const SizedBox(height: 40.0),
                         Text(firstCaption, style: _captionStyle),
                         const SizedBox(height: 30.0),
-                        Text(secondCaption, style: _captionStyle),
-                        const SizedBox(height: 30.0),
                         const Divider(thickness: 1.5, color: Colors.white),
                         const SizedBox(height: 30.0),
-                        Text(thirdCaption, style: _captionStyle),
-                        const SizedBox(height: 40.0),
-                        const Text(
-                          'contributors@sistazshare.org',
-                          style:
-                              TextStyle(color: Colors.orange, fontSize: 18.0),
+                        RichText(
+                          text: TextSpan(
+                            text: secondCaption,
+                            style: _captionStyle,
+                            children: const [
+                              TextSpan(
+                                text: ' - contributors@sistazshare.org',
+                                style: TextStyle(
+                                    color: Colors.orange, fontSize: 18.0),
+                              ),
+                            ],
+                          ),
                         ),
                         const SizedBox(height: 50.0),
                       ],
