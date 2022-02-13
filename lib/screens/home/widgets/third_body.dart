@@ -11,17 +11,21 @@ class ThirdBody extends StatelessWidget {
       builder: (context, sizingInformation) {
         final bool isMobile = sizingInformation.isMobile;
         final bool isTablet = sizingInformation.isTablet;
-        final _textStyle = TextStyle(
-          wordSpacing: 1.5,
-          letterSpacing: 1.5,
-          color: Colors.orange,
-          fontFamily: Fonts.mazzard,
-          fontSize: isMobile
-              ? 16.0
-              : isTablet
-                  ? size.width * 0.02
-                  : size.width * 0.014,
-        );
+        final bool isDesktop = sizingInformation.isDesktop;
+        final _textStyle = isDesktop
+            ? Theme.of(context).textTheme.headline4!.copyWith(
+                  wordSpacing: 1.5,
+                  letterSpacing: 1.5,
+                  color: Colors.orange,
+                  fontFamily: Fonts.mazzard,
+                )
+            : const TextStyle(
+                fontSize: 20.0,
+                wordSpacing: 1.5,
+                letterSpacing: 1.5,
+                color: Colors.orange,
+                fontFamily: Fonts.mazzard,
+              );
         return Material(
           color: Colors.black,
           child: Padding(
