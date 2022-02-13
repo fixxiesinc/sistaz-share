@@ -32,18 +32,18 @@ class GetInTouch extends StatelessWidget {
                           ? CrossAxisAlignment.start
                           : CrossAxisAlignment.end,
                       children: [
-                        SizedBox(
-                          height: isMobile
-                              ? 20.0
-                              : isTablet
-                                  ? 40.0
-                                  : Get.height * 0.05,
-                        ),
                         Expanded(
                           flex: isDesktop ? 7 : 0,
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
+                              SizedBox(
+                                height: isMobile
+                                    ? 20.0
+                                    : isTablet
+                                        ? 40.0
+                                        : Get.height * 0.05,
+                              ),
                               Text(
                                 'Get in touch',
                                 style: TextStyle(
@@ -118,9 +118,16 @@ class GetInTouch extends StatelessWidget {
                         isDesktop
                             ? Expanded(
                                 flex: 3,
-                                child: Image.asset(
-                                  Images.logoIconWhite,
-                                  height: size.height * 0.3,
+                                child: Padding(
+                                  padding: EdgeInsets.only(
+                                      top: isDesktop ? Get.height * 0.05 : 0),
+                                  child: Container(
+                                    alignment: Alignment.centerRight,
+                                    child: Image.asset(
+                                      Images.logoIconWhite,
+                                      height: size.height * 0.3,
+                                    ),
+                                  ),
                                 ),
                               )
                             : Container(),
