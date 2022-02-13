@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sistaz_share_web/exports.dart';
 import 'package:another_flushbar/flushbar.dart';
-import 'package:sistaz_share_web/models/early_adopter.dart';
 import 'package:sistaz_share_web/services/database_service.dart';
 
 class GetNotified extends StatefulWidget {
@@ -15,16 +14,32 @@ class _GetNotifiedState extends State<GetNotified> {
   bool detailsUploaded = false;
   final _formKey = GlobalKey<FormState>();
   final PageProvider pageProvider = Get.find();
+  final ScrollController scrollController = ScrollController();
   final TextEditingController nameController = TextEditingController();
   final TextEditingController countryController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
 
   @override
   void dispose() {
+    scrollController.dispose();
     nameController.dispose();
     countryController.dispose();
     emailController.dispose();
     super.dispose();
+  }
+
+  @override
+  void didChangeDependencies() {
+    scrollController.addListener(() {
+      if (scrollController.offset >=
+              scrollController.position.maxScrollExtent - 5 &&
+          !scrollController.position.outOfRange) {
+        pageProvider.pageController.nextPage(
+            duration: const Duration(seconds: 1),
+            curve: Curves.fastLinearToSlowEaseIn);
+      }
+    });
+    super.didChangeDependencies();
   }
 
   @override
@@ -43,6 +58,9 @@ class _GetNotifiedState extends State<GetNotified> {
               right: isMobile ? 20.0 : 60.0,
             ),
             child: SingleChildScrollView(
+              controller: scrollController,
+              // physics: const NeverScrollableScrollPhysics(),
+              physics: const ClampingScrollPhysics(),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -61,7 +79,7 @@ class _GetNotifiedState extends State<GetNotified> {
                         text: TextSpan(
                           text: 'Be the first to get notified when we go live',
                           style:
-                              Theme.of(context).textTheme.headline4!.copyWith(
+                              Theme.of(context).textTheme.headline5!.copyWith(
                                     color: Colors.white,
                                     fontFamily: Fonts.mazzard,
                                   ),
@@ -142,10 +160,15 @@ class _GetNotifiedState extends State<GetNotified> {
                               ),
                               const SizedBox(height: 50.0),
                               ArgonButton(
-                                height: 38,
                                 borderRadius: 0,
                                 color: Colors.white,
-                                width: Get.width * (isDesktop ? 0.077 : 0.2),
+                                height: isDesktop ? 43 : 38,
+                                width: Get.width *
+                                    (isDesktop
+                                        ? 0.077
+                                        : isTablet
+                                            ? 0.2
+                                            : 0.25),
                                 child: detailsUploaded
                                     ? const Icon(Icons.check)
                                     : Text(
@@ -153,7 +176,7 @@ class _GetNotifiedState extends State<GetNotified> {
                                         style: Theme.of(context)
                                             .textTheme
                                             .button!
-                                            .copyWith(),
+                                            .copyWith(letterSpacing: 0.5),
                                       ),
                                 loader: Container(
                                   padding: const EdgeInsets.all(10),
