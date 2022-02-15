@@ -33,7 +33,7 @@ class SecondBody extends StatelessWidget {
                         text: TextSpan(
                           text: caption,
                           style:
-                              Theme.of(context).textTheme.headline4!.copyWith(
+                              Theme.of(context).textTheme.headline5!.copyWith(
                                     color: Colors.orange,
                                     fontFamily: Fonts.mazzard,
                                   ),
