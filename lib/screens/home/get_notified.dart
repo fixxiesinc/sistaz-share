@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:sistaz_share_web/exports.dart';
 import 'package:another_flushbar/flushbar.dart';
-import 'package:sistaz_share_web/services/database_service.dart';
 
 class GetNotified extends StatefulWidget {
   const GetNotified({Key? key}) : super(key: key);
@@ -221,7 +220,7 @@ class _GetNotifiedState extends State<GetNotified> {
                                     }
                                   }
                                 },
-                              )
+                              ),
                             ],
                           ),
                         ),
