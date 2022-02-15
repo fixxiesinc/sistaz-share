@@ -11,6 +11,7 @@ export 'package:delayed_display/delayed_display.dart';
 export 'package:transparent_image/transparent_image.dart';
 export 'package:animated_text_kit/animated_text_kit.dart';
 export 'package:responsive_builder/responsive_builder.dart';
+export 'package:cached_network_image/cached_network_image.dart';
 export 'package:argon_buttons_flutter/argon_buttons_flutter.dart';
 export 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 
@@ -27,6 +28,7 @@ export 'package:sistaz_share_web/widgets/required_button.dart';
 export 'package:sistaz_share_web/providers/menu_provider.dart';
 export 'package:sistaz_share_web/providers/page_provider.dart';
 export 'package:sistaz_share_web/screens/home/tell_stories.dart';
+export 'package:sistaz_share_web/services/database_service.dart';
 export 'package:sistaz_share_web/screens/home/get_notified.dart';
 export 'package:sistaz_share_web/screens/home/social_handles.dart';
 export 'package:sistaz_share_web/screens/home/widgets/header.dart';
