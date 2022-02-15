@@ -13,7 +13,7 @@ class ThirdBody extends StatelessWidget {
         final bool isTablet = sizingInformation.isTablet;
         final bool isDesktop = sizingInformation.isDesktop;
         final _textStyle = isDesktop
-            ? Theme.of(context).textTheme.headline4!.copyWith(
+            ? Theme.of(context).textTheme.headline5!.copyWith(
                   wordSpacing: 1.5,
                   letterSpacing: 1.5,
                   color: Colors.orange,
