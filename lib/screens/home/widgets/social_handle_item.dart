@@ -17,10 +17,10 @@ class SocialHandleItem extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            label.toUpperCase(),
+            label,
             style: Theme.of(context)
                 .textTheme
-                .headline6!
+                .headline5!
                 .copyWith(color: Colors.white),
           ),
           const SizedBox(height: 20.0),
