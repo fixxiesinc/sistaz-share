@@ -61,10 +61,10 @@ class _StoryCategoriesState extends State<StoryCategories> {
                     const SizedBox(height: 26.0),
                     Text(
                       category.label,
-                      style: const TextStyle(
-                        fontSize: 30.0,
-                        color: Colors.white,
-                      ),
+                      style: Theme.of(context)
+                          .textTheme
+                          .headline5!
+                          .copyWith(color: Colors.white),
                     ),
                   ],
                 ),
