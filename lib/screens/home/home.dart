@@ -22,7 +22,7 @@ class Home extends StatelessWidget {
               sliderMenu: const Menu(),
               appBarColor: Colors.transparent,
               slideDirection: SlideDirection.TOP_TO_BOTTOM,
-              sliderMenuOpenSize: MediaQuery.of(context).size.height,
+              sliderMenuOpenSize: Get.size.height,
               sliderMain: ListView(
                 shrinkWrap: true,
                 children: const [
