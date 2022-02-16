@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:sistaz_share_web/exports.dart';
 
 class SocialHandleItem extends StatelessWidget {
   final String label;
@@ -9,7 +8,6 @@ class SocialHandleItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return InkWell(
       onTap: onTap,
       child: Column(
