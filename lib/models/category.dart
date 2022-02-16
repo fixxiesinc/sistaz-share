@@ -1,178 +1,47 @@
-import 'package:flutter/material.dart';
 import 'package:sistaz_share_web/exports.dart';
 
 class Category {
-  final Widget image;
+  final String imageUrl;
   final String label;
-  final List<String> subCategories;
 
   Category({
-    required this.image,
+    required this.imageUrl,
     required this.label,
-    required this.subCategories,
   });
 }
 
 class Blossom extends Category {
-  Blossom()
-      : super(
-          label: 'Blossom',
-          image: FadeInImage.memoryNetwork(
-            fit: BoxFit.cover,
-            image: CloudImages.blossom,
-            placeholder: kTransparentImage,
-          ),
-          subCategories: [
-            'Inspirational  •  ',
-            'Quotes  •  ',
-            'Motivational Messages  •  ',
-            'Empowering Stories',
-          ],
-        );
+  Blossom() : super(label: 'Blossom', imageUrl: Images.blossom);
 }
 
 class News extends Category {
-  News()
-      : super(
-          label: 'News',
-          image: FadeInImage.memoryNetwork(
-            fit: BoxFit.cover,
-            image: CloudImages.news,
-            placeholder: kTransparentImage,
-          ),
-          subCategories: [
-            'Current Affairs  •  ',
-            'Trends  •  ',
-            'Social Discussions',
-          ],
-        );
+  News() : super(label: 'News', imageUrl: Images.news);
 }
 
 class Lifestyle extends Category {
-  Lifestyle()
-      : super(
-          label: 'Lifestyle',
-          image: FadeInImage.memoryNetwork(
-            fit: BoxFit.cover,
-            image: CloudImages.lifestyle,
-            placeholder: kTransparentImage,
-          ),
-          subCategories: [
-            'Fashion  •  ',
-            'Beauty  •  ',
-            'Culture  •  ',
-            'Travel & Places',
-          ],
-        );
+  Lifestyle() : super(label: 'Lifestyle', imageUrl: Images.lifestyle);
 }
 
 class MindAndBody extends Category {
-  MindAndBody()
-      : super(
-          label: 'Mind & Body',
-          image: FadeInImage.memoryNetwork(
-            fit: BoxFit.cover,
-            image: CloudImages.mindAndBody,
-            placeholder: kTransparentImage,
-          ),
-          subCategories: [
-            'Health  •  ',
-            'Emotions  •  ',
-            'Fertility  •  ',
-            'Fitness'
-          ],
-        );
+  MindAndBody() : super(label: 'Mind & Body', imageUrl: Images.mindAndBody);
 }
 
 class Money extends Category {
-  Money()
-      : super(
-          label: 'Money',
-          image: FadeInImage.memoryNetwork(
-            fit: BoxFit.cover,
-            image: CloudImages.money,
-            placeholder: kTransparentImage,
-          ),
-          subCategories: [
-            'Entrepreneurship  •  ',
-            'Investments  •  ',
-            'Savings  •  ',
-            'Work Place',
-          ],
-        );
+  Money() : super(label: 'Money', imageUrl: Images.money);
 }
 
 class Fun extends Category {
-  Fun()
-      : super(
-          label: 'Fun',
-          image: FadeInImage.memoryNetwork(
-            fit: BoxFit.cover,
-            image: CloudImages.fun,
-            placeholder: kTransparentImage,
-          ),
-          subCategories: [
-            'Music  •  ',
-            'Movies  •  ',
-            'Games  •  ',
-            'Sports  •  ',
-            'Celebrities  •  ',
-            'Shows',
-          ],
-        );
+  Fun() : super(label: 'Fun', imageUrl: Images.fun);
 }
 
 class DatingAndSex extends Category {
-  DatingAndSex()
-      : super(
-          label: 'Dating & Sex',
-          image: FadeInImage.memoryNetwork(
-            fit: BoxFit.cover,
-            image: CloudImages.datingAndSex,
-            placeholder: kTransparentImage,
-          ),
-          subCategories: [
-            'Love  •  ',
-            'Orgasms  •  ',
-            'Hard Truths  •  ',
-            'Cheating  •  ',
-            'Men',
-          ],
-        );
+  DatingAndSex() : super(label: 'Dating & Sex', imageUrl: Images.datingAndSex);
 }
 
 class Family extends Category {
-  Family()
-      : super(
-          label: 'Family',
-          image: FadeInImage.memoryNetwork(
-            fit: BoxFit.cover,
-            image: CloudImages.family,
-            placeholder: kTransparentImage,
-          ),
-          subCategories: [
-            'Marriage  •  ',
-            'Kids  •  ',
-            'Siblings  •  ',
-            'Frienships'
-          ],
-        );
+  Family() : super(label: 'Family', imageUrl: Images.family);
 }
 
 class She extends Category {
-  She()
-      : super(
-          label: 'She',
-          image: FadeInImage.memoryNetwork(
-            fit: BoxFit.cover,
-            image: CloudImages.she,
-            placeholder: kTransparentImage,
-          ),
-          subCategories: [
-            'Women\'s History  •  ',
-            'Women\'s Social Issues  •  ',
-            ' Equity  •  ',
-            ' Mental Strength',
-          ],
-        );
+  She() : super(label: 'She', imageUrl: Images.she);
 }
