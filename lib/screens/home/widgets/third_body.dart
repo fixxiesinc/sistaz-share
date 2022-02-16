@@ -6,7 +6,6 @@ class ThirdBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return ResponsiveBuilder(
       builder: (context, sizingInformation) {
         final bool isMobile = sizingInformation.isMobile;
@@ -61,8 +60,8 @@ class ThirdBody extends StatelessWidget {
                     fontSize: isMobile
                         ? 44.0
                         : isTablet
-                            ? size.width * 0.09
-                            : size.width * 0.06,
+                            ? Get.width * 0.09
+                            : Get.width * 0.06,
                   ),
                 ),
                 const SizedBox(height: 20.0),
