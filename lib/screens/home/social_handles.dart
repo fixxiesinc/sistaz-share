@@ -7,7 +7,6 @@ class SocialHandles extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final size = MediaQuery.of(context).size;
     return ResponsiveBuilder(
       builder: (context, sizingInformation) {
         bool isMobile = sizingInformation.isMobile;
@@ -21,7 +20,7 @@ class SocialHandles extends StatelessWidget {
             Container(
               height: 1.5,
               color: Colors.white,
-              width: isMobile ? double.infinity : size.width * 0.3,
+              width: isMobile ? double.infinity : Get.width * 0.3,
             ),
             const SizedBox(height: 20.0),
             SocialHandleItem(
@@ -31,7 +30,7 @@ class SocialHandles extends StatelessWidget {
             Container(
               height: 1.5,
               color: Colors.white,
-              width: isMobile ? double.infinity : size.width * 0.3,
+              width: isMobile ? double.infinity : Get.width * 0.3,
             ),
             const SizedBox(height: 20.0),
             SocialHandleItem(
@@ -41,7 +40,7 @@ class SocialHandles extends StatelessWidget {
             Container(
               height: 1.5,
               color: Colors.white,
-              width: isMobile ? double.infinity : size.width * 0.3,
+              width: isMobile ? double.infinity : Get.width * 0.3,
             ),
             const SizedBox(height: 20.0),
             SocialHandleItem(
