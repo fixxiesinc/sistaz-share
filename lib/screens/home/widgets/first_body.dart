@@ -6,7 +6,6 @@ class FirstBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return Material(
       color: Colors.black,
       child: ResponsiveBuilder(
@@ -42,8 +41,8 @@ class FirstBody extends StatelessWidget {
                       fontSize: isMobile
                           ? 32.0
                           : isTablet
-                              ? size.width * 0.06
-                              : size.width * 0.035,
+                              ? Get.width * 0.06
+                              : Get.width * 0.035,
                     ),
                     children: const [
                       TextSpan(
@@ -55,12 +54,12 @@ class FirstBody extends StatelessWidget {
                 ),
                 SizedBox(
                   height: 30.0,
-                  width: isDesktop ? size.width * 0.1 : 0.0,
+                  width: isDesktop ? Get.width * 0.1 : 0.0,
                 ),
                 Image.asset(
                   Images.woman,
-                  width: isMobile ? size.width * 0.8 : size.width * 0.3,
-                  height: isMobile ? size.width * 0.8 : size.width * 0.3,
+                  width: isMobile ? Get.width * 0.8 : Get.width * 0.3,
+                  height: isMobile ? Get.width * 0.8 : Get.width * 0.3,
                 )
               ],
             ),
