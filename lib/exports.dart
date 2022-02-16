@@ -11,7 +11,6 @@ export 'package:delayed_display/delayed_display.dart';
 export 'package:transparent_image/transparent_image.dart';
 export 'package:animated_text_kit/animated_text_kit.dart';
 export 'package:responsive_builder/responsive_builder.dart';
-export 'package:cached_network_image/cached_network_image.dart';
 export 'package:argon_buttons_flutter/argon_buttons_flutter.dart';
 export 'package:flutter_slider_drawer/flutter_slider_drawer.dart';
 
