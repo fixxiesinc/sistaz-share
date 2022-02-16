@@ -6,6 +6,15 @@ class Images {
   static const String logoIconWhite = imagesPath + 'logo_icon_white.png';
   static const String logoTextWhite = imagesPath + 'logo_text_white.png';
   static const String woman = imagesPath + 'woman.jpg';
+  static const String blossom = imagesPath + 'blossom.jpg';
+  static const String datingAndSex = imagesPath + 'dating_and_sex.jpg';
+  static const String family = imagesPath + 'family.jpg';
+  static const String fun = imagesPath + 'fun.jpg';
+  static const String lifestyle = imagesPath + 'lifestyle.jpg';
+  static const String mindAndBody = imagesPath + 'mind_and_body.jpg';
+  static const String money = imagesPath + 'money.jpg';
+  static const String news = imagesPath + 'news.jpg';
+  static const String she = imagesPath + 'she.jpg';
 }
 
 class CloudImages {
