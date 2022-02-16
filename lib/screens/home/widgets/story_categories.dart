@@ -53,10 +53,14 @@ class _StoryCategoriesState extends State<StoryCategories> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      child: category.image,
+                      // child: CachedNetworkImage(
+                      //   fit: BoxFit.cover,
+                      //   imageUrl: category.imageUrl,
+                      // ),
+                      child: Image.asset(category.imageUrl, fit: BoxFit.cover),
                       color: Colors.grey[900],
-                      height: isDesktop ? Get.height * 0.5 : Get.height * 0.4,
                       width: isMobile ? Get.width * 0.9 : Get.height * 0.7,
+                      height: isDesktop ? Get.height * 0.5 : Get.height * 0.4,
                     ),
                     const SizedBox(height: 26.0),
                     Text(
@@ -71,6 +75,8 @@ class _StoryCategoriesState extends State<StoryCategories> {
               );
             },
           ),
+        
+        
         );
       },
     );
