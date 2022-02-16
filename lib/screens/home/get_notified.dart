@@ -15,8 +15,8 @@ class _GetNotifiedState extends State<GetNotified> {
   final PageProvider pageProvider = Get.find();
   final ScrollController scrollController = ScrollController();
   final TextEditingController nameController = TextEditingController();
-  final TextEditingController countryController = TextEditingController();
   final TextEditingController emailController = TextEditingController();
+  final TextEditingController countryController = TextEditingController();
 
   @override
   void dispose() {
@@ -43,7 +43,6 @@ class _GetNotifiedState extends State<GetNotified> {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return Material(
       color: Colors.black,
       child: ResponsiveBuilder(
@@ -94,7 +93,7 @@ class _GetNotifiedState extends State<GetNotified> {
                       Form(
                         key: _formKey,
                         child: SizedBox(
-                          width: isDesktop ? size.width * 0.3 : null,
+                          width: isDesktop ? Get.width * 0.3 : null,
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
