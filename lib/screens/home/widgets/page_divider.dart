@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sistaz_share_web/exports.dart';
 
 class PageDivider extends StatelessWidget {
   final double? height;
@@ -6,9 +7,8 @@ class PageDivider extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return SizedBox(
-      height: size.height * 0.5,
+      height: Get.height * 0.5,
       child: const VerticalDivider(
         thickness: 1.5,
         color: Colors.white,
