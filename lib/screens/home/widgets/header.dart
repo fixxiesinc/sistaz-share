@@ -22,7 +22,6 @@ class _HeaderState extends State<Header> {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return ResponsiveBuilder(
       builder: (context, sizingInformation) {
         bool isMobile = sizingInformation.isMobile;
@@ -52,10 +51,10 @@ class _HeaderState extends State<Header> {
                         child: Image.asset(
                           Images.logoTextWhite,
                           width: isMobile
-                              ? size.width * 0.35
+                              ? Get.width * 0.35
                               : isTablet
-                                  ? size.width * 0.2
-                                  : size.width * 0.12,
+                                  ? Get.width * 0.2
+                                  : Get.width * 0.12,
                         ),
                       ),
                 InkWell(
