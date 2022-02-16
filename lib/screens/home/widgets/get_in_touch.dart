@@ -9,7 +9,6 @@ class GetInTouch extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final Size size = MediaQuery.of(context).size;
     return Material(
       color: Colors.black,
       child: ResponsiveBuilder(
@@ -111,7 +110,7 @@ class GetInTouch extends StatelessWidget {
                                   Container(),
                                   Image.asset(
                                     Images.logoIconWhite,
-                                    height: size.height * 0.15,
+                                    height: Get.height * 0.15,
                                   ),
                                 ],
                               ),
@@ -125,7 +124,7 @@ class GetInTouch extends StatelessWidget {
                                     alignment: Alignment.centerRight,
                                     child: Image.asset(
                                       Images.logoIconWhite,
-                                      height: size.height * 0.3,
+                                      height: Get.height * 0.3,
                                     ),
                                   ),
                                 ),
