@@ -53,11 +53,7 @@ class _StoryCategoriesState extends State<StoryCategories> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Container(
-                      // child: CachedNetworkImage(
-                      //   fit: BoxFit.cover,
-                      //   imageUrl: category.imageUrl,
-                      // ),
-                      child: Image.asset(category.imageUrl, fit: BoxFit.cover),
+                      child: Image.network(category.imageUrl, fit: BoxFit.cover),
                       color: Colors.grey[900],
                       width: isMobile ? Get.width * 0.9 : Get.height * 0.7,
                       height: isDesktop ? Get.height * 0.5 : Get.height * 0.4,
@@ -67,7 +63,7 @@ class _StoryCategoriesState extends State<StoryCategories> {
                       category.label,
                       style: Theme.of(context)
                           .textTheme
-                          .headline5!
+                          .headlineSmall!
                           .copyWith(color: Colors.white),
                     ),
                   ],

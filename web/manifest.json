@@ -1,11 +1,11 @@
 {
-    "name": "sistaz_share_web",
-    "short_name": "sistaz_share_web",
+    "name": "Sistaz Share",
+    "short_name": "Sistaz Share",
     "start_url": ".",
     "display": "standalone",
-    "background_color": "#0175C2",
-    "theme_color": "#0175C2",
-    "description": "Coming soon website of Sistaz Share",
+    "background_color": "#000000",
+    "theme_color": "#000000",
+    "description": "Sistaz Share Coming Soon Page",
     "orientation": "portrait-primary",
     "prefer_related_applications": false,
     "icons": [

@@ -1,10 +1,5 @@
-import 'package:flutter/material.dart';
+import 'package:sistaz_share_web/exports.dart';
 
-class MenuProvider extends ChangeNotifier {
-  bool menuOpen = false;
-
-  void toggleMenuState(bool value) {
-    menuOpen = value;
-    notifyListeners();
-  }
+class MenuProvider extends GetxController {
+  Rx<bool> menuOpen = false.obs;
 }

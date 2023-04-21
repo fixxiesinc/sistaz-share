@@ -1,5 +1,16 @@
 {
   "projects": {
-    "default": "sistaz-share"
-  }
+    "default": "sistaz-share",
+    "prod": "sistaz-share"
+  },
+  "targets": {
+    "sistaz-share": {
+      "hosting": {
+        "coming-soon": [
+          "sistaz-share"
+        ]
+      }
+    }
+  },
+  "etags": {}
 }

@@ -12,7 +12,7 @@ class ThirdBody extends StatelessWidget {
         final bool isTablet = sizingInformation.isTablet;
         final bool isDesktop = sizingInformation.isDesktop;
         final _textStyle = isDesktop
-            ? Theme.of(context).textTheme.headline5!.copyWith(
+            ? Theme.of(context).textTheme.headlineSmall!.copyWith(
                   wordSpacing: 1.5,
                   letterSpacing: 1.5,
                   color: Colors.orange,
@@ -65,12 +65,9 @@ class ThirdBody extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 20.0),
-                FilledButton(
+                ColoredButton(
                   label: 'READ & TELL STORIES',
-                  onPressed: () => Get.to(
-                    () => const TellStories(),
-                    routeName: 'read-and-tell-your-stories',
-                  ),
+                  onPressed: () => Get.toNamed('/join'),
                 ),
                 const SizedBox(height: 60.0),
               ],

@@ -1,3 +1,4 @@
+// ignore: avoid_web_libraries_in_flutter
 import 'dart:html' as html;
 import 'package:flutter/material.dart';
 import 'package:sistaz_share_web/exports.dart';
@@ -11,15 +12,6 @@ class Header extends StatefulWidget {
 }
 
 class _HeaderState extends State<Header> {
-  bool menuOpen = false;
-  late MenuProvider menuProvider;
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    menuProvider = Provider.of<MenuProvider>(context, listen: false);
-  }
-
   @override
   Widget build(BuildContext context) {
     return ResponsiveBuilder(
@@ -58,15 +50,15 @@ class _HeaderState extends State<Header> {
                         ),
                       ),
                 InkWell(
-                  onTap: () => onMenuIconPress(),
-                  child: Text(
-                    menuOpen ? 'CLOSE' : 'MENU',
-                    style: const TextStyle(
-                      fontSize: 12.0,
-                      letterSpacing: 2,
-                      color: Colors.white,
-                    ),
-                  ),
+                  onTap: () => Utils.toggleMenu(),
+                  child: Obx(() => Text(
+                        menuProvider.menuOpen.value ? 'CLOSE' : 'MENU',
+                        style: const TextStyle(
+                          fontSize: 12.0,
+                          letterSpacing: 2,
+                          color: Colors.white,
+                        ),
+                      )),
                 ),
               ],
             ),
@@ -74,17 +66,5 @@ class _HeaderState extends State<Header> {
         );
       },
     );
-  }
-
-  void onMenuIconPress() {
-    if (menuKey.currentState!.isDrawerOpen) {
-      menuKey.currentState!.closeDrawer();
-    } else {
-      menuKey.currentState!.openDrawer();
-    }
-    setState(() {
-      menuOpen = !menuOpen;
-      menuProvider.toggleMenuState(menuOpen);
-    });
   }
 }

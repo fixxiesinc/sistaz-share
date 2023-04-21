@@ -1,16 +1,43 @@
-# sistaz_share_web
+### Description
+Sistaz Share coming soon page.
 
-Coming soon website of Sistaz Share
+<br>
 
-## Getting Started
+### Getting Started
 
-This project is a starting point for a Flutter application.
+This project is a starting point for a Flutter application. It is a web project hosted on Firebase.
 
-A few resources to get you started if this is your first Flutter project:
+Get dependencies using:
+```dart
+flutter pub get
+```
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+Login to Firebase using an account with access to update the project on Firebase.
+```dart
+firebase login
+```
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Select the appropriate project ( ```sistaz-share``` ) from Firebase by running the follwoing code. When asked for an alias, set it to **prod**.
+```dart
+firebase use --add
+```
+
+All subdomains are registered under the one Firebase project (Sistaz Share), Because of that, a hosting target must be applied for the particular project/subdomain; in this case ```sistaz-share```
+
+```dart
+firebase target:apply hosting coming-soon sistaz-share
+```
+
+<br>
+
+### Building and Deploying
+
+Build the project by running the below code. The output of the command is found in the ```build/web``` folder
+```dart
+flutter build web
+```
+
+Deploy to Firebase hosting using the below code. Make sure ```"target":"coming-soon"``` is set in the ```firebase.json``` file before running this command.
+```dart
+firebase deploy --only hosting:coming-soon
+```

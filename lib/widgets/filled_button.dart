@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:sistaz_share_web/exports.dart';
 
-class FilledButton extends StatelessWidget {
+class ColoredButton extends StatelessWidget {
   final String label;
   final VoidCallback? onPressed;
-  const FilledButton({Key? key, required this.label, required this.onPressed})
+  const ColoredButton({Key? key, required this.label, required this.onPressed})
       : super(key: key);
 
   @override
@@ -20,7 +20,7 @@ class FilledButton extends StatelessWidget {
               label,
               style: Theme.of(context)
                   .textTheme
-                  .button!
+                  .labelLarge!
                   .copyWith(letterSpacing: 0.5),
             ),
             style: ButtonStyle(

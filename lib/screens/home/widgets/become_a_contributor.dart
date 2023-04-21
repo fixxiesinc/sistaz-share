@@ -84,7 +84,7 @@ class _BecomeAContributorState extends State<BecomeAContributor> {
                           text: TextSpan(
                             text: 'Become a contributor',
                             style:
-                                Theme.of(context).textTheme.headline5!.copyWith(
+                                Theme.of(context).textTheme.headlineSmall!.copyWith(
                                       color: Colors.white,
                                       fontFamily: Fonts.mazzard,
                                     ),
@@ -125,7 +125,7 @@ class _BecomeAContributorState extends State<BecomeAContributor> {
                       Container(),
                       Text(
                         Demoji.bouquet,
-                        style: Theme.of(context).textTheme.headline1,
+                        style: Theme.of(context).textTheme.displayLarge,
                       ),
                     ],
                   ),

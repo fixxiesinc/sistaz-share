@@ -34,6 +34,8 @@ class _TellStoriesState extends State<TellStories> {
                     children: [
                       InkWell(
                         onTap: () => Get.back(),
+                        splashColor: Colors.transparent,
+                        highlightColor: Colors.transparent,
                         child: const Icon(
                           Icons.arrow_back,
                           color: Colors.white,
@@ -62,9 +64,7 @@ class _TellStoriesState extends State<TellStories> {
                     itemCount: pageProvider.pages.length,
                     controller: pageProvider.pageController,
                     onPageChanged: (value) {
-                      value == 0
-                          ? pageProvider.currentPage--
-                          : pageProvider.currentPage++;
+                      pageProvider.currentPage(value);
                     },
                     itemBuilder: (context, index) => pageProvider.pages[index],
                   ),

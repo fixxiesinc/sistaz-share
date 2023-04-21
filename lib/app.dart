@@ -6,17 +6,26 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(PageProvider());
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider<MenuProvider>(create: (_) => MenuProvider()),
-      ],
-      child: GetMaterialApp(
-        home: const Splash(),
-        title: 'Sistaz Share',
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(fontFamily: Fonts.mazzard),
-      ),
+    return GetMaterialApp(
+      onGenerateTitle: (context) {
+        switch (Get.currentRoute) {
+          case '/contact':
+            return 'Contact';
+          case '/join':
+            return 'Join Us';
+          default:
+            return Strings.appName;
+        }
+      },
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(fontFamily: Fonts.mazzard),
+      initialRoute: '/',
+      defaultTransition: Transition.fade,
+      routes: {
+        '/': (p0) => const Splash(),
+        '/contact': (p0) => const GetInTouch(),
+        '/join': (p0) => const TellStories(),
+      },
     );
   }
 }

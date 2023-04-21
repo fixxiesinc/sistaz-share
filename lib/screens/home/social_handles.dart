@@ -1,4 +1,3 @@
-import 'dart:js' as dartjs;
 import 'package:flutter/material.dart';
 import 'package:sistaz_share_web/exports.dart';
 
@@ -13,9 +12,10 @@ class SocialHandles extends StatelessWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SocialHandleItem(
+            // instagram
+            const SocialHandleItem(
               label: 'Instagram',
-              onTap: () => dartjs.context.callMethod('open', [Urls.instagram]),
+              link: Urls.instagram,
             ),
             Container(
               height: 1.5,
@@ -23,9 +23,11 @@ class SocialHandles extends StatelessWidget {
               width: isMobile ? double.infinity : Get.width * 0.3,
             ),
             const SizedBox(height: 20.0),
-            SocialHandleItem(
+
+            // facebook
+            const SocialHandleItem(
               label: 'Facebook',
-              onTap: () => dartjs.context.callMethod('open', [Urls.facebook]),
+              link: Urls.facebook,
             ),
             Container(
               height: 1.5,
@@ -33,9 +35,11 @@ class SocialHandles extends StatelessWidget {
               width: isMobile ? double.infinity : Get.width * 0.3,
             ),
             const SizedBox(height: 20.0),
-            SocialHandleItem(
+
+            // twitter
+            const SocialHandleItem(
               label: 'Twitter',
-              onTap: () => dartjs.context.callMethod('open', [Urls.twitter]),
+              link: Urls.twitter,
             ),
             Container(
               height: 1.5,
@@ -43,9 +47,30 @@ class SocialHandles extends StatelessWidget {
               width: isMobile ? double.infinity : Get.width * 0.3,
             ),
             const SizedBox(height: 20.0),
-            SocialHandleItem(
-              label: 'Contact',
-              onTap: () => Get.to(() => const GetInTouch()),
+
+            // get in touch
+            InkWell(
+              onTap: () async{
+                await Utils.toggleMenu();
+                await Get.toNamed('/contact');
+              },
+              highlightColor: Colors.transparent,
+              hoverColor: Colors.transparent,
+              splashColor: Colors.transparent,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Contact',
+                    style: Theme.of(context)
+                        .textTheme
+                        .headlineSmall!
+                        .copyWith(color: Colors.white),
+                  ),
+                  const SizedBox(height: 20.0),
+                ],
+              ),
             ),
           ],
         );

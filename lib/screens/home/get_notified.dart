@@ -77,7 +77,7 @@ class _GetNotifiedState extends State<GetNotified> {
                         text: TextSpan(
                           text: 'Be the first to get notified when we go live',
                           style:
-                              Theme.of(context).textTheme.headline5!.copyWith(
+                              Theme.of(context).textTheme.headlineSmall!.copyWith(
                                     color: Colors.white,
                                     fontFamily: Fonts.mazzard,
                                   ),
@@ -98,53 +98,79 @@ class _GetNotifiedState extends State<GetNotified> {
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              TextField(
+                              // full name
+                              TextFormField(
                                 controller: nameController,
                                 cursorColor: Colors.orange,
                                 style: Theme.of(context)
                                     .textTheme
-                                    .headline6!
+                                    .titleLarge!
                                     .copyWith(color: Colors.white),
+                                onFieldSubmitted: (value) async {
+                                  await saveData();
+                                },
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'This is a required field';
+                                  }
+                                  return null;
+                                },
                                 decoration: textfieldDecoration.copyWith(
                                   hintText: 'Full Name',
                                   hintStyle: Theme.of(context)
                                       .textTheme
-                                      .headline6!
+                                      .titleLarge!
                                       .copyWith(color: Colors.grey),
                                 ),
                               ),
                               const SizedBox(height: 30.0),
-                              TextField(
+
+                              // country
+                              TextFormField(
                                 controller: countryController,
                                 cursorColor: Colors.orange,
                                 textCapitalization: TextCapitalization.words,
                                 style: Theme.of(context)
                                     .textTheme
-                                    .headline6!
+                                    .titleLarge!
                                     .copyWith(color: Colors.white),
+                                onFieldSubmitted: (value) async {
+                                  await saveData();
+                                },
+                                validator: (value) {
+                                  if (value == null || value.isEmpty) {
+                                    return 'This is a required field';
+                                  }
+                                  return null;
+                                },
                                 decoration: textfieldDecoration.copyWith(
                                   hintText: 'Country',
                                   hintStyle: Theme.of(context)
                                       .textTheme
-                                      .headline6!
+                                      .titleLarge!
                                       .copyWith(color: Colors.grey),
                                 ),
                               ),
                               const SizedBox(height: 30.0),
+
+                              // email
                               TextFormField(
                                 controller: emailController,
                                 cursorColor: Colors.orange,
                                 keyboardType: TextInputType.emailAddress,
                                 style: Theme.of(context)
                                     .textTheme
-                                    .headline6!
+                                    .titleLarge!
                                     .copyWith(color: Colors.white),
+                                onFieldSubmitted: (value) async {
+                                  await saveData();
+                                },
                                 decoration: textfieldDecoration.copyWith(
                                   hintText: 'Email',
                                   suffixIcon: const RequiredIcon(),
                                   hintStyle: Theme.of(context)
                                       .textTheme
-                                      .headline6!
+                                      .titleLarge!
                                       .copyWith(color: Colors.grey),
                                 ),
                                 validator: (value) {
@@ -157,68 +183,39 @@ class _GetNotifiedState extends State<GetNotified> {
                                 },
                               ),
                               const SizedBox(height: 50.0),
-                              ArgonButton(
-                                borderRadius: 0,
-                                color: Colors.white,
-                                height: isDesktop ? 43 : 38,
-                                width: Get.width *
-                                    (isDesktop
-                                        ? 0.077
-                                        : isTablet
-                                            ? 0.2
-                                            : 0.25),
-                                child: detailsUploaded
-                                    ? const Icon(Icons.check)
-                                    : Text(
-                                        'SEND',
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .button!
-                                            .copyWith(letterSpacing: 0.5),
-                                      ),
-                                loader: Container(
-                                  padding: const EdgeInsets.all(10),
-                                  child: const CircularProgressIndicator(
-                                    color: Colors.black,
-                                    strokeWidth: 2.0,
+
+                              // send button
+                              Row(
+                                children: [
+                                  RoundedLoadingButton(
+                                    controller: _btnController,
+                                    successColor: Colors.white,
+                                    color: Colors.white,
+                                    valueColor: Colors.black,
+                                    height: isDesktop ? 43 : 38,
+                                    animateOnTap: false,
+                                    borderRadius: _btnController.currentState ==
+                                            ButtonState.idle
+                                        ? 0
+                                        : 1000,
+                                    onPressed: () async => await saveData(),
+                                    width: Get.width *
+                                        (isDesktop
+                                            ? 0.077
+                                            : isTablet
+                                                ? 0.2
+                                                : 0.25),
+                                    child: detailsUploaded
+                                        ? const Icon(Icons.check)
+                                        : Text(
+                                            'SEND',
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .labelLarge!
+                                                .copyWith(letterSpacing: 0.5),
+                                          ),
                                   ),
-                                ),
-                                onTap: (startLoading, stopLoading,
-                                    btnState) async {
-                                  if (_formKey.currentState!.validate()) {
-                                    if (!detailsUploaded) {
-                                      startLoading();
-                                      EarlyAdopter earlyAdopter = EarlyAdopter(
-                                        name: nameController.text,
-                                        country: countryController.text,
-                                        email: emailController.text,
-                                      );
-                                      var result =
-                                          await DatabaseService.addNewAdopter(
-                                        earlyAdopter,
-                                      );
-                                      if (result['state']) {
-                                        stopLoading();
-                                        setState(() => detailsUploaded = true);
-                                        await Future.delayed(
-                                          const Duration(seconds: 2),
-                                        );
-                                        pageProvider.pageController.nextPage(
-                                          duration: const Duration(seconds: 1),
-                                          curve: Curves.fastLinearToSlowEaseIn,
-                                        );
-                                        pageProvider.currentPage += 1;
-                                      } else {
-                                        stopLoading();
-                                        Flushbar(
-                                          message:
-                                              'An error occurred. Please try again later',
-                                          duration: const Duration(seconds: 5),
-                                        ).show(context);
-                                      }
-                                    }
-                                  }
-                                },
+                                ],
                               ),
                             ],
                           ),
@@ -234,7 +231,7 @@ class _GetNotifiedState extends State<GetNotified> {
                       Container(),
                       Text(
                         Demoji.lipstick,
-                        style: Theme.of(context).textTheme.headline1,
+                        style: Theme.of(context).textTheme.displayLarge,
                       ),
                     ],
                   ),
@@ -246,5 +243,43 @@ class _GetNotifiedState extends State<GetNotified> {
         },
       ),
     );
+  }
+
+  final RoundedLoadingButtonController _btnController =
+      RoundedLoadingButtonController();
+
+  Future<void> saveData() async {
+    if (_formKey.currentState!.validate()) {
+      if (!detailsUploaded) {
+        _btnController.start();
+        setState(() => detailsUploaded = true);
+
+        EarlyAdopter record = EarlyAdopter(
+          name: nameController.text.trim(),
+          country: countryController.text.trim(),
+          email: emailController.text.trim(),
+        );
+
+        var result = await DatabaseService.addNewAdopter(record);
+        if (result['state']) {
+          _btnController.stop();
+          _btnController.success();
+
+          setState(() => detailsUploaded = true);
+          await Future.delayed(const Duration(seconds: 2));
+          pageProvider.pageController.nextPage(
+            duration: const Duration(milliseconds: 1500),
+            curve: Curves.easeIn,
+          );
+          pageProvider.currentPage += 1;
+        } else {
+          _btnController.error();
+          Flushbar(
+            message: 'An error occurred. Please try again later',
+            duration: const Duration(seconds: 5),
+          ).show(context);
+        }
+      }
+    }
   }
 }
