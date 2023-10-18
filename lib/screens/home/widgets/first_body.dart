@@ -21,45 +21,43 @@ class FirstBody extends StatelessWidget {
                   ? 20.0
                   : isTablet
                       ? 40.0
-                      : Get.height * 0.05,
+                      : MediaQuery.of(context).size.height * 0.05,
             ),
-            child: Wrap(
-              direction: isDesktop ? Axis.horizontal : Axis.vertical,
-              crossAxisAlignment:
-                  isTablet ? WrapCrossAlignment.end : WrapCrossAlignment.start,
-              alignment:
-                  isDesktop ? WrapAlignment.spaceBetween : WrapAlignment.start,
+            child: Column(
               children: [
-                RichText(
-                  text: TextSpan(
-                    text: 'An evolving zone for \nzestful',
-                    style: TextStyle(
-                      height: 1.3,
-                      wordSpacing: 1.5,
-                      color: Colors.white,
-                      fontFamily: Fonts.mazzard,
-                      fontSize: isMobile
-                          ? 32.0
-                          : isTablet
-                              ? Get.width * 0.06
-                              : Get.width * 0.035,
-                    ),
-                    children: const [
-                      TextSpan(
-                        text: ' women',
-                        style: TextStyle(fontStyle: FontStyle.italic),
-                      ),
-                    ],
+                Text(
+                  'A medium of unbounded storytelling for women who are discovering the world and themselves in the process',
+                  style: TextStyle(
+                    height: 1.3,
+                    wordSpacing: 1.5,
+                    color: Colors.white,
+                    fontFamily: Fonts.mazzard,
+                    fontSize: isMobile
+                        ? 32.0
+                        : isTablet
+                            ? MediaQuery.of(context).size.width * 0.06
+                            : MediaQuery.of(context).size.width * 0.035,
                   ),
                 ),
                 SizedBox(
                   height: 30.0,
-                  width: isDesktop ? Get.width * 0.1 : 0.0,
+                  width:
+                      isDesktop ? MediaQuery.of(context).size.width * 0.1 : 0.0,
                 ),
-                Image.asset(
-                  Images.woman,
-                  width: isMobile ? Get.width * 0.8 : Get.width * 0.3,
-                  height: isMobile ? Get.width * 0.8 : Get.width * 0.3,
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(),
+                    Image.asset(
+                      Images.woman,
+                      width: isMobile
+                          ? MediaQuery.of(context).size.width * 0.8
+                          : MediaQuery.of(context).size.width * 0.3,
+                      height: isMobile
+                          ? MediaQuery.of(context).size.width * 0.8
+                          : MediaQuery.of(context).size.width * 0.3,
+                    ),
+                  ],
                 )
               ],
             ),

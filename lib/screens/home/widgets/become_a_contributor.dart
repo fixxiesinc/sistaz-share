@@ -72,10 +72,12 @@ class _BecomeAContributorState extends State<BecomeAContributor> {
                         ? 20.0
                         : isTablet
                             ? 40.0
-                            : Get.height * 0.05,
+                            : MediaQuery.of(context).size.height * 0.05,
                   ),
                   SizedBox(
-                    width: isDesktop ? Get.width * 0.6 : null,
+                    width: isDesktop
+                        ? MediaQuery.of(context).size.width * 0.6
+                        : null,
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -83,11 +85,13 @@ class _BecomeAContributorState extends State<BecomeAContributor> {
                         RichText(
                           text: TextSpan(
                             text: 'Become a contributor',
-                            style:
-                                Theme.of(context).textTheme.headlineSmall!.copyWith(
-                                      color: Colors.white,
-                                      fontFamily: Fonts.mazzard,
-                                    ),
+                            style: Theme.of(context)
+                                .textTheme
+                                .headlineSmall!
+                                .copyWith(
+                                  color: Colors.white,
+                                  fontFamily: Fonts.mazzard,
+                                ),
                             children: const [
                               TextSpan(
                                 text: ' !',
