@@ -1,64 +1,70 @@
-// ignore: avoid_web_libraries_in_flutter
-import 'dart:html' as html;
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:sistaz_share_web/exports.dart';
 
 class Header extends StatefulWidget {
-  final bool showBackButton;
-  const Header({Key? key, this.showBackButton = false}) : super(key: key);
+  const Header({Key? key}) : super(key: key);
 
   @override
   State<Header> createState() => _HeaderState();
 }
 
 class _HeaderState extends State<Header> {
+  final randomGradient = Random();
+
   @override
   Widget build(BuildContext context) {
     return ResponsiveBuilder(
       builder: (context, sizingInformation) {
         bool isMobile = sizingInformation.isMobile;
-        bool isTablet = sizingInformation.isTablet;
-        bool isDesktop = sizingInformation.isDesktop;
-        return SafeArea(
-          child: Padding(
-            padding: EdgeInsets.only(
-              bottom: 20.0,
-              top: isDesktop ? 40.0 : 30.0,
-              left: isMobile ? 20.0 : 60.0,
-              right: isMobile ? 20.0 : 60.0,
+        return Obx(
+          () => AnimatedContainer(
+            curve: Curves.easeIn,
+            duration: const Duration(milliseconds: 300),
+            alignment: Alignment.topCenter,
+            color: Colors.black,
+            padding: EdgeInsets.symmetric(
+              horizontal: isMobile ? 20.0 : 60.0,
+              vertical:
+                  isMobile ? 16.0 : MediaQuery.of(context).size.height * 0.034,
             ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                widget.showBackButton
-                    ? InkWell(
-                        onTap: () => Get.back(),
-                        child: const Icon(
-                          Icons.arrow_back,
-                          color: Colors.white,
-                        ),
-                      )
-                    : InkWell(
-                        onTap: () => html.window.location.reload(),
-                        child: Image.asset(
-                          Images.logoTextWhite,
-                          width: isMobile
-                              ? Get.width * 0.35
-                              : isTablet
-                                  ? Get.width * 0.2
-                                  : Get.width * 0.12,
-                        ),
+                // logo
+                Link(
+                  uri: Uri.parse('/'),
+                  builder: (context, followLink) {
+                    return InkWell(
+                      hoverColor: Colors.transparent,
+                      highlightColor: Colors.transparent,
+                      onTap: () => followLink!(),
+                      child: Image.asset(
+                        Images.logoTextWhite,
+                        width: isMobile
+                            ? MediaQuery.of(context).size.width * 0.35
+                            : MediaQuery.of(context).size.width * 0.11,
                       ),
+                    );
+                  },
+                ),
+
+                // menu button
                 InkWell(
-                  onTap: () => Utils.toggleMenu(),
-                  child: Obx(() => Text(
-                        menuProvider.menuOpen.value ? 'CLOSE' : 'MENU',
-                        style: const TextStyle(
-                          fontSize: 12.0,
-                          letterSpacing: 2,
-                          color: Colors.white,
-                        ),
-                      )),
+                  hoverColor: Colors.transparent,
+                  highlightColor: Colors.transparent,
+                  onTap: () {
+                    menuProvider.menuOpen.value = !menuProvider.menuOpen.value;
+                  },
+                  child: Text(
+                    menuProvider.menuOpen.value ? 'CLOSE' : 'MENU',
+                    style: TextStyle(
+                      letterSpacing: 1.5,
+                      fontFamily: Fonts.anton,
+                      fontSize: isMobile ? 14.0 : 16.0,
+                      color: Colors.white,
+                    ),
+                  ),
                 ),
               ],
             ),
