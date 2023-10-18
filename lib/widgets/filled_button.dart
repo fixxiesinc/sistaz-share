@@ -16,13 +16,6 @@ class ColoredButton extends StatelessWidget {
           height: isDesktop ? 43 : 38,
           child: ElevatedButton(
             onPressed: onPressed,
-            child: Text(
-              label,
-              style: Theme.of(context)
-                  .textTheme
-                  .labelLarge!
-                  .copyWith(letterSpacing: 0.5),
-            ),
             style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all<Color?>(Colors.white),
               shape: MaterialStateProperty.all<RoundedRectangleBorder>(
@@ -33,6 +26,13 @@ class ColoredButton extends StatelessWidget {
                   return const EdgeInsets.symmetric(horizontal: 30.0);
                 },
               ),
+            ),
+            child: Text(
+              label,
+              style: Theme.of(context)
+                  .textTheme
+                  .labelLarge!
+                  .copyWith(letterSpacing: 0.5),
             ),
           ),
         );
