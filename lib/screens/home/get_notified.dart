@@ -71,16 +71,18 @@ class _GetNotifiedState extends State<GetNotified> {
                             ? 20.0
                             : isTablet
                                 ? 40.0
-                                : Get.height * 0.05,
+                                : MediaQuery.of(context).size.height * 0.05,
                       ),
                       RichText(
                         text: TextSpan(
                           text: 'Be the first to get notified when we go live',
-                          style:
-                              Theme.of(context).textTheme.headlineSmall!.copyWith(
-                                    color: Colors.white,
-                                    fontFamily: Fonts.mazzard,
-                                  ),
+                          style: Theme.of(context)
+                              .textTheme
+                              .headlineSmall!
+                              .copyWith(
+                                color: Colors.white,
+                                fontFamily: Fonts.mazzard,
+                              ),
                           children: const [
                             TextSpan(
                               text: ' !',
@@ -93,7 +95,9 @@ class _GetNotifiedState extends State<GetNotified> {
                       Form(
                         key: _formKey,
                         child: SizedBox(
-                          width: isDesktop ? Get.width * 0.3 : null,
+                          width: isDesktop
+                              ? MediaQuery.of(context).size.width * 0.3
+                              : null,
                           child: Column(
                             mainAxisSize: MainAxisSize.min,
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -199,7 +203,7 @@ class _GetNotifiedState extends State<GetNotified> {
                                         ? 0
                                         : 1000,
                                     onPressed: () async => await saveData(),
-                                    width: Get.width *
+                                    width: MediaQuery.of(context).size.width *
                                         (isDesktop
                                             ? 0.077
                                             : isTablet
@@ -274,10 +278,12 @@ class _GetNotifiedState extends State<GetNotified> {
           pageProvider.currentPage += 1;
         } else {
           _btnController.error();
-          Flushbar(
-            message: 'An error occurred. Please try again later',
-            duration: const Duration(seconds: 5),
-          ).show(context);
+          if (mounted) {
+            Flushbar(
+              message: 'An error occurred. Please try again later',
+              duration: const Duration(seconds: 5),
+            ).show(context);
+          }
         }
       }
     }
