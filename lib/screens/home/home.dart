@@ -151,6 +151,7 @@ class ExploreText extends StatelessWidget {
       style: Theme.of(context).textTheme.headlineSmall!.copyWith(
             color: Colors.white,
             fontFamily: Fonts.mazzard,
+            fontWeight: FontWeight.w300,
           ),
     );
   }
