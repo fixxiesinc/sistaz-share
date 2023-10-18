@@ -1,12 +1,12 @@
 name: sistaz_share_web
 description: Sistaz Share coming soon page
 
-publish_to: "none"
+publish_to: 'none'
 
 version: 1.0.0+1
 
 environment:
-  sdk: ">=3.0.0 <4.0.0"
+  sdk: '>=3.0.0 <4.0.0'
 
 dependencies:
   flutter:
@@ -20,6 +20,7 @@ dependencies:
   cupertino_icons: ^1.0.2
   cloud_firestore: ^4.10.0
   carousel_slider: ^4.0.0
+  clipboard: ^0.1.3
 
   # d
   delayed_display: ^2.0.0
@@ -28,10 +29,13 @@ dependencies:
 
   # e
   email_validator: ^2.0.1
+  expandable: ^5.0.1
+  expandable_page_view: ^1.0.17
 
   # f
   firebase_core: ^2.18.0
   flextras: ^1.0.0
+  flick_video_player: ^0.5.0
 
   # g
   get: ^4.6.1
@@ -45,10 +49,14 @@ dependencies:
 
   # t
   transparent_image: ^2.0.0
+  textstyle_extensions: ^2.0.0-nullsafety
 
   # u
   url_launcher: ^6.1.10
   url_strategy: ^0.2.0
+
+  # v
+  video_player: ^2.7.2
 
 dev_dependencies:
   flutter_test:
@@ -64,9 +72,26 @@ flutter:
     - assets/gifs/
 
   fonts:
-    - family: Mazzard
+    - family: MazzardM
       fonts:
-        - asset: assets/fonts/mazzardm-light.otf
+        - asset: assets/fonts/MazzardM-Thin.otf
+          weight: 100
+        - asset: assets/fonts/MazzardM-ExtraLight.otf
+          weight: 200
+        - asset: assets/fonts/MazzardM-Light.otf
+          weight: 300
+        - asset: assets/fonts/MazzardM-Regular.otf
+          weight: 400
+        - asset: assets/fonts/MazzardM-Medium.otf
+          weight: 500
+        - asset: assets/fonts/MazzardM-SemiBold.otf
+          weight: 600
+        - asset: assets/fonts/MazzardM-Bold.otf
+          weight: 700
+        - asset: assets/fonts/MazzardM-ExtraBold.otf
+          weight: 800
+        - asset: assets/fonts/MazzardM-Black.otf
+          weight: 900
 
     - family: Autography
       fonts:
@@ -75,7 +100,7 @@ flutter:
     - family: Times-New-Roman
       fonts:
         - asset: assets/fonts/Times-New-Roman.ttf
-    
+
     - family: Anton
       fonts:
         - asset: assets/fonts/Anton-Regular.ttf
