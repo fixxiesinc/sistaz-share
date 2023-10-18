@@ -20,7 +20,9 @@ class SocialHandles extends StatelessWidget {
             Container(
               height: 1.5,
               color: Colors.white,
-              width: isMobile ? double.infinity : Get.width * 0.3,
+              width: isMobile
+                  ? double.infinity
+                  : MediaQuery.of(context).size.width * 0.3,
             ),
             const SizedBox(height: 20.0),
 
@@ -32,7 +34,9 @@ class SocialHandles extends StatelessWidget {
             Container(
               height: 1.5,
               color: Colors.white,
-              width: isMobile ? double.infinity : Get.width * 0.3,
+              width: isMobile
+                  ? double.infinity
+                  : MediaQuery.of(context).size.width * 0.3,
             ),
             const SizedBox(height: 20.0),
 
@@ -44,16 +48,15 @@ class SocialHandles extends StatelessWidget {
             Container(
               height: 1.5,
               color: Colors.white,
-              width: isMobile ? double.infinity : Get.width * 0.3,
+              width: isMobile
+                  ? double.infinity
+                  : MediaQuery.of(context).size.width * 0.3,
             ),
             const SizedBox(height: 20.0),
 
             // get in touch
             InkWell(
-              onTap: () async{
-                await Utils.toggleMenu();
-                await Get.toNamed('/contact');
-              },
+              onTap: () => context.go('/${Routes.contact}'),
               highlightColor: Colors.transparent,
               hoverColor: Colors.transparent,
               splashColor: Colors.transparent,
