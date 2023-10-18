@@ -34,9 +34,15 @@ class LastBody extends StatelessWidget {
                 Link(
                   uri: Uri.parse('/${Routes.joinUs}'),
                   builder: (context, followLink) {
-                    return ColoredButton(
+                    return Button(
                       label: 'READ & TELL STORIES',
                       onPressed: () => followLink!(),
+                      paddingBlock: 16,
+                      paddingInline: 24,
+                      textStyle: Theme.of(context)
+                            .textTheme
+                            .labelLarge!
+                            .copyWith(letterSpacing: 0.5)
                     );
                   },
                 ),

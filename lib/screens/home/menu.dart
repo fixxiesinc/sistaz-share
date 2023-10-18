@@ -21,7 +21,7 @@ class _MenuState extends State<Menu> {
   final List<String> items = [
     'Home',
     'Join Us',
-    'Become a Counselor',
+    'Become a Counsellor',
     'Our Story',
     'Contact',
     'Invite a Friend',

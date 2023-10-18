@@ -32,6 +32,7 @@ class FirstBody extends StatelessWidget {
                     wordSpacing: 1.5,
                     color: Colors.white,
                     fontFamily: Fonts.mazzard,
+                    fontWeight: FontWeight.w300,
                     fontSize: isMobile
                         ? 32.0
                         : isTablet
