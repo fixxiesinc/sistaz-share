@@ -15,9 +15,11 @@ void main() async {
 void registerSingletons() {
   GetIt.I.registerSingleton<MenuProvider>(Get.put(MenuProvider()));
   GetIt.I.registerSingleton<PageProvider>(Get.put(PageProvider()));
+  GetIt.I.registerSingleton<ViewController>(Get.put(ViewController()));
 }
 
 MenuProvider get menuProvider => GetIt.I.get<MenuProvider>();
 PageProvider get pageController => GetIt.I.get<PageProvider>();
+ViewController get viewController => GetIt.I.get<ViewController>();
 
 
