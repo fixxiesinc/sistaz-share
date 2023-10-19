@@ -23,29 +23,6 @@ class _BecomeAContributorState extends State<BecomeAContributor> {
     fontFamily: Fonts.mazzard,
   );
 
-  final PageProvider pageProvider = Get.find();
-  final ScrollController scrollController = ScrollController();
-
-  @override
-  void dispose() {
-    scrollController.dispose();
-    super.dispose();
-  }
-
-  @override
-  void didChangeDependencies() {
-    scrollController.addListener(() {
-      if (scrollController.offset <=
-              scrollController.position.minScrollExtent &&
-          !scrollController.position.outOfRange) {
-        pageProvider.pageController.previousPage(
-            duration: const Duration(seconds: 1),
-            curve: Curves.fastLinearToSlowEaseIn);
-      }
-    });
-    super.didChangeDependencies();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -61,8 +38,6 @@ class _BecomeAContributorState extends State<BecomeAContributor> {
               right: isMobile ? 20.0 : 60.0,
             ),
             child: SingleChildScrollView(
-              controller: scrollController,
-              // physics: const NeverScrollableScrollPhysics(),
               physics: const ClampingScrollPhysics(),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
