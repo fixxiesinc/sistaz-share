@@ -1,3 +1,6 @@
+// ignore: avoid_web_libraries_in_flutter
+import 'dart:html' as html;
+
 import 'package:flutter/material.dart';
 import 'package:sistaz_share_web/exports.dart';
 
@@ -12,10 +15,10 @@ class _ChatPageState extends State<ChatPage> {
   @override
   void initState() {
     super.initState();
-    Future.delayed(const Duration(milliseconds: 00)).then((value) {
+    Future.delayed(const Duration(milliseconds: 1000)).then((value) {
       chatController.chats.add(const AIReply());
     });
-    Future.delayed(const Duration(milliseconds: 000)).then((value) {
+    Future.delayed(const Duration(milliseconds: 1500)).then((value) {
       chatController.chats.add(const UserReply(
         options: [
           'Self Esteem Issues',
@@ -28,21 +31,65 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: SingleChildScrollView(
-        padding: EdgeInsets.all(Doubles.marginX(context)),
-        child: Obx(() {
-          return SeparatedColumn(
-            separatorBuilder: () => const Gap(20),
-            children: List.generate(chatController.chats.length, (index) {
-              return chatController.chats[index];
+    return Title(
+      color: Colors.black,
+      title: 'Chat | Sistaz Share',
+      child: Scaffold(
+        body: Column(
+          children: [
+            Expanded(
+              child: SingleChildScrollView(
+                padding: EdgeInsets.all(Doubles.marginX(context)),
+                child: Obx(() {
+                  return SeparatedColumn(
+                    separatorBuilder: () => const Gap(20),
+                    children:
+                        List.generate(chatController.chats.length, (index) {
+                      return chatController.chats[index];
+                    }),
+                  );
+                }),
+              ),
+            ),
+
+            // text field
+            Obx(() {
+              return chatController.showKeyboard.value
+                  ? const Entry(
+                      opacity: 0,
+                      yOffset: 200,
+                      curve: Curves.easeOutCubic,
+                      child: TextBox(),
+                    )
+                  : const SizedBox.shrink();
             }),
-          );
-        }),
+
+            // restart session button
+            Obx(() {
+              return chatController.showChatActionButtons.value
+                  ? Entry(
+                      opacity: 0,
+                      yOffset: 200,
+                      delay: const Duration(milliseconds: 2000),
+                      curve: Curves.easeOutCubic,
+                      child: Padding(
+                        padding: const EdgeInsets.only(bottom: 30, top: 12),
+                        child: Button(
+                          label: 'Click here to restart session',
+                          labelSize: 16,
+                          onPressed: () => html.window.location.reload(),
+                        ),
+                      ),
+                    )
+                  : const SizedBox.shrink();
+            }),
+          ],
+        ),
       ),
     );
   }
 }
+
 
 
 
