@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:sistaz_share_web/exports.dart';
 
 class Routes {
+  static const String chat = 'chat';
   static const String contact = 'contact';
   static const String joinUs = 'join-us';
   static const String ourStory = 'our-story';
@@ -19,12 +20,12 @@ final router = GoRouter(
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
       builder: (context, state, child) {
-        // return Layout(child: child);
-        return Obx(() {
-          return viewController.splashPlayed.value
-              ? Layout(child: child)
-              : const Splash();
-        });
+        return Layout(child: child);
+        // return Obx(() {
+        //   return viewController.splashPlayed.value
+        //       ? Layout(child: child)
+        //       : const Splash();
+        // });
       },
       routes: [
         // latest
@@ -55,7 +56,7 @@ final router = GoRouter(
           parentNavigatorKey: _shellNavigatorKey,
           pageBuilder: (context, state) {
             viewController.currentPage('Join Us');
-            return const NoTransitionPage(child: TellStories());
+            return const NoTransitionPage(child: JoinUs());
           },
         ),
 
@@ -78,6 +79,17 @@ final router = GoRouter(
           pageBuilder: (context, state) {
             viewController.currentPage('Invite a Friend');
             return const NoTransitionPage(child: InviteAFriend());
+          },
+        ),
+
+        // chat
+        GoRoute(
+          path: '/${Routes.chat}',
+          name: Routes.chat,
+          parentNavigatorKey: _shellNavigatorKey,
+          pageBuilder: (context, state) {
+            viewController.currentPage('');
+            return const NoTransitionPage(child: ChatPage());
           },
         ),
       ],
