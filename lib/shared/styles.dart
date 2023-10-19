@@ -36,11 +36,15 @@ class Styles {
   static TextStyle body(BuildContext context) {
     return TextStyle(
       height: 1.3,
-      color: Colors.black,
+      color: Colors.white,
       fontWeight: FontWeight.w300,
       fontSize: getValueForScreenType(
-          context: context, mobile: 18, tablet: 20, desktop: 20),
-      letterSpacing: getValueForScreenType(context: context, mobile: 0.8),
+        context: context,
+        mobile: 18,
+        tablet: 20,
+        desktop: 20,
+      ),
+      // letterSpacing: getValueForScreenType(context: context, mobile: 0.8),
     );
   }
 

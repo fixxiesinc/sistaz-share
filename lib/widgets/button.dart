@@ -7,6 +7,7 @@ class Button extends StatelessWidget {
   final double? paddingInline, paddingBlock, labelSize;
   final VoidCallback onPressed;
   final TextStyle? textStyle;
+  final bool maxWidth;
   const Button({
     Key? key,
     required this.label,
@@ -18,6 +19,7 @@ class Button extends StatelessWidget {
     this.borderColor,
     this.color,
     this.labelColor,
+    this.maxWidth = false,
   }) : super(key: key);
 
   @override
@@ -25,6 +27,7 @@ class Button extends StatelessWidget {
     return InkWell(
       onTap: onPressed,
       child: Container(
+        alignment: maxWidth ? Alignment.center : null,
         decoration: BoxDecoration(
             border: Border.all(color: borderColor ?? Colors.transparent),
             borderRadius: BorderRadius.circular(6),
