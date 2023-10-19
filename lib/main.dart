@@ -14,12 +14,12 @@ void main() async {
 
 void registerSingletons() {
   GetIt.I.registerSingleton<MenuProvider>(Get.put(MenuProvider()));
-  GetIt.I.registerSingleton<PageProvider>(Get.put(PageProvider()));
   GetIt.I.registerSingleton<ViewController>(Get.put(ViewController()));
+  GetIt.I.registerSingleton<FormController>(Get.put(FormController()));
+  GetIt.I.registerSingleton<ChatController>(Get.put(ChatController()));
 }
 
 MenuProvider get menuProvider => GetIt.I.get<MenuProvider>();
-PageProvider get pageController => GetIt.I.get<PageProvider>();
 ViewController get viewController => GetIt.I.get<ViewController>();
-
-
+FormController get formController => GetIt.I.get<FormController>();
+ChatController get chatController => GetIt.I.get<ChatController>();
