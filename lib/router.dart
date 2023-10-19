@@ -20,12 +20,12 @@ final router = GoRouter(
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
       builder: (context, state, child) {
-        return Layout(child: child);
-        // return Obx(() {
-        //   return viewController.splashPlayed.value
-        //       ? Layout(child: child)
-        //       : const Splash();
-        // });
+        // return Layout(child: child);
+        return Obx(() {
+          return viewController.splashPlayed.value
+              ? Layout(child: child)
+              : const Splash();
+        });
       },
       routes: [
         // latest

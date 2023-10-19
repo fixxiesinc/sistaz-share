@@ -14,16 +14,13 @@ class AIReply extends StatelessWidget {
             radius: 24,
             backgroundColor: const Color(0xFF151515),
             child: ClipRRect(
-              child: Image.asset(
-                Images.avatar1,
-                fit: BoxFit.cover,
-              ),
+              child: Image.asset(Images.avatar1, fit: BoxFit.cover),
             ),
           ),
         ),
         Expanded(
           child: FutureBuilder(
-            future: Future.delayed(const Duration(milliseconds: 2000)),
+            future: Future.delayed(const Duration(milliseconds: 1000)),
             builder: (context, snapshot) {
               if (snapshot.connectionState != ConnectionState.done) {
                 return const TypingIndicator(showIndicator: true);
