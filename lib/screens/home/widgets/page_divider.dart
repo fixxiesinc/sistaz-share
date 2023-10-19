@@ -9,7 +9,7 @@ class PageDivider extends StatelessWidget {
     return SizedBox(
       height: height ?? MediaQuery.of(context).size.height * 0.5,
       child: const VerticalDivider(
-        thickness: 1.5,
+        thickness: 0.5,
         color: Colors.white,
       ),
     );
