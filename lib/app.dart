@@ -6,13 +6,29 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp.router(
-      routerConfig: router,
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: Fonts.mazzard,
-        scaffoldBackgroundColor: Colors.black,
-        appBarTheme: const AppBarTheme(elevation: 0),
+    return GlobalLoaderOverlay(
+      useDefaultLoading: false,
+      overlayColor: Colors.transparent,
+      overlayWidget: SizedBox(
+        height: 5,
+        child: GradientProgressIndicator(
+          value: 0.9,
+          gradient: LinearGradient(
+            colors: [
+              Colors.orange.withOpacity(0.5),
+              Colors.orange,
+            ],
+          ),
+        ),
+      ),
+      child: MaterialApp.router(
+        routerConfig: router,
+        debugShowCheckedModeBanner: false,
+        theme: ThemeData(
+          fontFamily: Fonts.mazzard,
+          scaffoldBackgroundColor: Colors.black,
+          appBarTheme: const AppBarTheme(elevation: 0),
+        ),
       ),
     );
   }
