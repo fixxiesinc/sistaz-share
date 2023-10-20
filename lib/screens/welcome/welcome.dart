@@ -29,7 +29,7 @@ class _JoinUsState extends State<JoinUs> {
                   flex: 2,
                   child: Padding(
                     padding: EdgeInsets.symmetric(
-                      vertical: Doubles.marginX(context),
+                      vertical: isDesktop ? Doubles.marginX(context) : 20,
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,

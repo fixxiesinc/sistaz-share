@@ -93,14 +93,14 @@ class _WantToSayMoreState extends State<WantToSayMore> {
               child: CircleAvatar(
                 radius: 24,
                 backgroundColor: const Color(0xFF151515),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(1000),
-                  child: RandomAvatar(
-                    userController.user!.username,
-                    trBackground: true,
-                    fit: BoxFit.cover,
-                  ),
-                ),
+                // child: ClipRRect(
+                //   borderRadius: BorderRadius.circular(1000),
+                //   child: RandomAvatar(
+                //     userController.user!.username,
+                //     trBackground: true,
+                //     fit: BoxFit.cover,
+                //   ),
+                // ),
               ),
             ),
           ],

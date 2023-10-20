@@ -29,7 +29,7 @@ class _LoginState extends State<Login> {
                   flex: 2,
                   child: SingleChildScrollView(
                     padding: EdgeInsets.symmetric(
-                      vertical: Doubles.marginX(context),
+                      vertical: isDesktop ? Doubles.marginX(context) : 20,
                     ),
                     child: FractionallySizedBox(
                       widthFactor: isDesktop ? 0.6 : 1,
