@@ -28,15 +28,22 @@ export 'package:flick_video_player/flick_video_player.dart';
 export 'package:textstyle_extensions/textstyle_extensions.dart';
 export 'package:rounded_loading_button/rounded_loading_button.dart';
 
+// models
+export 'package:sistaz_share_web/models/user.dart';
+export 'package:sistaz_share_web/models/chat.dart';
+export 'package:sistaz_share_web/models/counsellor.dart';
+
 // controllers
-export 'package:sistaz_share_web/providers/view_controller.dart';
-export 'package:sistaz_share_web/providers/chat_controller.dart';
-export 'package:sistaz_share_web/providers/form_controller.dart';
+export 'package:sistaz_share_web/controllers/view_controller.dart';
+export 'package:sistaz_share_web/controllers/chat_controller.dart';
+export 'package:sistaz_share_web/controllers/form_controller.dart';
+export 'package:sistaz_share_web/controllers/user_controller.dart';
 
 // local
 export 'package:sistaz_share_web/app.dart';
 export 'package:sistaz_share_web/main.dart';
 export 'package:sistaz_share_web/router.dart';
+export 'package:sistaz_share_web/shared/utils.dart';
 export 'package:sistaz_share_web/shared/styles.dart';
 export 'package:sistaz_share_web/shared/images.dart';
 export 'package:sistaz_share_web/screens/layout.dart';
@@ -49,12 +56,13 @@ export 'package:sistaz_share_web/screens/chat/chat.dart';
 export 'package:sistaz_share_web/screens/home/menu.dart';
 export 'package:sistaz_share_web/screens/home/home.dart';
 export 'package:sistaz_share_web/widgets/menu_tile.dart';
-export 'package:sistaz_share_web/models/early_adopter.dart';
-export 'package:sistaz_share_web/screens/join_us/join_us.dart';
+export 'package:sistaz_share_web/screens/welcome/login.dart';
+export 'package:sistaz_share_web/screens/welcome/welcome.dart';
 export 'package:sistaz_share_web/screens/invite_a_friend.dart';
 export 'package:sistaz_share_web/widgets/required_button.dart';
-export 'package:sistaz_share_web/providers/menu_provider.dart';
+export 'package:sistaz_share_web/screens/welcome/register.dart';
 export 'package:sistaz_share_web/widgets/typing_indicator.dart';
+export 'package:sistaz_share_web/controllers/menu_provider.dart';
 export 'package:sistaz_share_web/services/database_service.dart';
 export 'package:sistaz_share_web/screens/home/social_handles.dart';
 export 'package:sistaz_share_web/screens/home/widgets/header.dart';
@@ -64,16 +72,16 @@ export 'package:sistaz_share_web/screens/home/widgets/first_body.dart';
 export 'package:sistaz_share_web/screens/home/widgets/third_body.dart';
 export 'package:sistaz_share_web/screens/chat/widgets/user_reply.dart';
 export 'package:sistaz_share_web/screens/home/widgets/page_divider.dart';
-export 'package:sistaz_share_web/screens/join_us/widgets/sign_up_form.dart';
-export 'package:sistaz_share_web/screens/join_us/widgets/gender_select.dart';
+export 'package:sistaz_share_web/screens/welcome/widgets/sign_up_form.dart';
+export 'package:sistaz_share_web/screens/welcome/widgets/gender_select.dart';
 export 'package:sistaz_share_web/screens/chat/widgets/want_to_say_more.dart';
-export 'package:sistaz_share_web/screens/join_us/widgets/country_select.dart';
+export 'package:sistaz_share_web/screens/welcome/widgets/country_select.dart';
 export 'package:sistaz_share_web/screens/home/widgets/social_handle_item.dart';
 export 'package:sistaz_share_web/screens/chat/widgets/tell_me_more_button.dart';
-export 'package:sistaz_share_web/screens/join_us/widgets/age_group_select.dart';
-export 'package:sistaz_share_web/screens/join_us/widgets/education_select.dart';
+export 'package:sistaz_share_web/screens/welcome/widgets/age_group_select.dart';
+export 'package:sistaz_share_web/screens/welcome/widgets/education_select.dart';
 export 'package:sistaz_share_web/screens/home/widgets/become_a_contributor.dart';
-export 'package:sistaz_share_web/screens/join_us/widgets/choose_counsellor.dart';
+export 'package:sistaz_share_web/screens/welcome/widgets/choose_counsellor.dart';
 export 'package:sistaz_share_web/screens/become_a_contributor/widgets/faqs.dart';
 export 'package:sistaz_share_web/screens/become_a_contributor/widgets/faq_div.dart';
 export 'package:sistaz_share_web/screens/become_a_contributor/widgets/faq_tile.dart';
