@@ -1,7 +1,3 @@
-A medium of unbounded storytelling for women who are discovering the world and themselves in the process
-
-<br>
-
 ### Getting Started
 
 This project is a starting point for a Flutter application. It is a web project hosted on Firebase.
