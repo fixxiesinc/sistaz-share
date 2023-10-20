@@ -67,6 +67,7 @@ class _LoginState extends State<Login> {
                                 onChanged: (value) {
                                   FormController.pincode = value;
                                 },
+                                onEditingComplete: () async => await login(),
                                 decoration: inputDecoration.copyWith(
                                   hintText: 'Pin code',
                                   hintStyle: Styles.body(context)
@@ -86,21 +87,7 @@ class _LoginState extends State<Login> {
                             onPressed: () async {
                               if (FormController.username.isNotEmpty &&
                                   FormController.pincode.isNotEmpty) {
-                                context.loaderOverlay.show();
-
-                                final res = await DatabaseService.fetchUser();
-
-                                if (mounted) context.loaderOverlay.hide();
-
-                                if (res != null) {
-                                  userController.user = res;
-                                  router.go('/${Routes.chat}');
-                                } else {
-                                  if (mounted) {
-                                    Utils.showToast(
-                                        context, 'No account found');
-                                  }
-                                }
+                                await login();
                               }
                             },
                           ),
@@ -139,5 +126,22 @@ class _LoginState extends State<Login> {
         },
       ),
     );
+  }
+
+  Future<void> login() async {
+    context.loaderOverlay.show();
+
+    final res = await DatabaseService.fetchUser();
+
+    if (mounted) context.loaderOverlay.hide();
+
+    if (res != null) {
+      userController.user = res;
+      router.go('/${Routes.chat}');
+    } else {
+      if (mounted) {
+        Utils.showToast(context, 'No account found');
+      }
+    }
   }
 }

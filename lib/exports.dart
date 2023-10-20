@@ -12,6 +12,7 @@ export 'package:clipboard/clipboard.dart';
 export 'package:expandable/expandable.dart';
 export 'package:url_strategy/url_strategy.dart';
 export 'package:video_player/video_player.dart';
+export 'package:random_avatar/random_avatar.dart';
 export 'package:firebase_core/firebase_core.dart';
 export 'package:dots_indicator/dots_indicator.dart';
 export 'package:loader_overlay/loader_overlay.dart';
@@ -26,7 +27,6 @@ export 'package:animated_text_kit/animated_text_kit.dart';
 export 'package:responsive_builder/responsive_builder.dart';
 export 'package:flick_video_player/flick_video_player.dart';
 export 'package:textstyle_extensions/textstyle_extensions.dart';
-export 'package:rounded_loading_button/rounded_loading_button.dart';
 
 // models
 export 'package:sistaz_share_web/models/user.dart';
@@ -56,6 +56,7 @@ export 'package:sistaz_share_web/screens/chat/chat.dart';
 export 'package:sistaz_share_web/screens/home/menu.dart';
 export 'package:sistaz_share_web/screens/home/home.dart';
 export 'package:sistaz_share_web/widgets/menu_tile.dart';
+export 'package:sistaz_share_web/widgets/profile_tile.dart';
 export 'package:sistaz_share_web/screens/welcome/login.dart';
 export 'package:sistaz_share_web/screens/welcome/welcome.dart';
 export 'package:sistaz_share_web/screens/invite_a_friend.dart';

@@ -8,8 +8,8 @@ class MenuTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     late String url;
-    if (label == 'Home') {
-      url = '/';
+    if (label == 'Join Us') {
+      url = '/welcome';
     } else {
       url = '/${label.replaceAll(' ', '-').toLowerCase()}';
     }
