@@ -11,6 +11,7 @@ class UserReply extends StatefulWidget {
 }
 
 class _UserReplyState extends State<UserReply> {
+  String selectedOption = '';
 
   @override
   Widget build(BuildContext context) {
@@ -27,111 +28,118 @@ class _UserReplyState extends State<UserReply> {
               child: Entry(
                 opacity: 0,
                 delay: const Duration(milliseconds: 1500),
-                child: Obx(() {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: [
-                      ChatBox(
-                        radius: 20,
-                        color: const Color(0xFF151515),
-                        borderColor: const Color(0xFF333333),
-                        onClick: null,
-                        content: Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 4),
-                          child: SeparatedColumn(
-                            separatorBuilder: () => const Gap(14),
-                            mainAxisSize: MainAxisSize.min,
-                            crossAxisAlignment: CrossAxisAlignment.end,
-                            children:
-                                List.generate(widget.options.length, (index) {
-                              return InkWell(
-                                splashColor: Colors.transparent,
-                                hoverColor: Colors.transparent,
-                                highlightColor: Colors.transparent,
-                                onTap: () async {
-                                  if (chatController.chatStarted) {
-                                    var res = processNextQuestion(
-                                        widget.options[index]);
-                                    if (res) {
-                                      processNextChat();
-                                    } else {
-                                      chatController.questionToAsk =
-                                          'Do you want to say more?';
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    ChatBox(
+                      radius: 20,
+                      color: const Color(0xFF151515),
+                      borderColor: const Color(0xFF333333),
+                      onClick: null,
+                      content: Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 4),
+                        child: SeparatedColumn(
+                          separatorBuilder: () => const Gap(14),
+                          mainAxisSize: MainAxisSize.min,
+                          crossAxisAlignment: CrossAxisAlignment.end,
+                          children:
+                              List.generate(widget.options.length, (index) {
+                            bool selected =
+                                selectedOption == widget.options[index];
 
-                                      chatController.chats.add(const AIReply());
-                                      await Future.delayed(
-                                        const Duration(milliseconds: 1500),
-                                      );
+                            return InkWell(
+                              splashColor: Colors.transparent,
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () async {
+                                setState(() {
+                                  selectedOption = widget.options[index];
+                                });
 
-                                      chatController.chats.add(
-                                        const WantToSayMore(),
-                                      );
-                                    }
-                                  } else {
-                                    chatController.chatStarted = true;
-
-                                    processNextQuestion(widget.options[index]);
-
-                                    chatController
-                                        .setDomain(widget.options[index]);
-
+                                if (chatController.chatStarted) {
+                                  var res = processNextQuestion(
+                                      widget.options[index]);
+                                  if (res) {
                                     processNextChat();
-                                  }
+                                  } else {
+                                    chatController.questionToAsk =
+                                        'Do you want to say more?';
 
-                                  if (widget.onSelect != null) {
-                                    widget.onSelect!();
+                                    chatController.chats.add(const AIReply());
+                                    await Future.delayed(
+                                      const Duration(milliseconds: 1500),
+                                    );
+
+                                    chatController.chats.add(
+                                      const WantToSayMore(),
+                                    );
                                   }
-                                },
-                                child: Container(
-                                  color: Colors.transparent,
-                                  child: Row(
-                                    mainAxisSize: MainAxisSize.min,
-                                    children: [
-                                      Flexible(
-                                        child: Text(
-                                          widget.options[index],
-                                          style: Styles.body(context).textColor(
-                                            Colors.white,
-                                          ),
+                                } else {
+                                  chatController.chatStarted = true;
+
+                                  processNextQuestion(widget.options[index]);
+
+                                  chatController
+                                      .setDomain(widget.options[index]);
+
+                                  processNextChat();
+                                }
+
+                                if (widget.onSelect != null) {
+                                  widget.onSelect!();
+                                }
+                              },
+                              child: Container(
+                                color: Colors.transparent,
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Flexible(
+                                      child: Text(
+                                        widget.options[index],
+                                        style: Styles.body(context).textColor(
+                                          Colors.white,
                                         ),
                                       ),
-                                      const Gap(12),
-                                      Icon(
-                                        chatController.selectedDomains
-                                                .contains(widget.options[index])
-                                            ? Icons.circle
-                                            : Icons.circle_outlined,
-                                        size: 16,
-                                        color: chatController.selectedDomains
-                                                .contains(widget.options[index])
-                                            ? Colors.orange
-                                            : Colors.white70,
-                                      )
-                                    ],
-                                  ),
+                                    ),
+                                    const Gap(12),
+                                    Icon(
+                                      selected
+                                          ? Icons.circle
+                                          : Icons.circle_outlined,
+                                      size: 16,
+                                      color: selected
+                                          ? Colors.orange
+                                          : Colors.white70,
+                                    )
+                                  ],
                                 ),
-                              );
-                            }),
-                          ),
+                              ),
+                            );
+                          }),
                         ),
                       ),
+                    ),
 
-                      const Gap(12),
+                    const Gap(12),
 
-                      // tell me more
-                      const TellMeMoreButton()
-                    ],
-                  );
-                }),
+                    // tell me more
+                    const TellMeMoreButton()
+                  ],
+                ),
               ),
             ),
 
             // user avatar
-            const Padding(
-              padding: EdgeInsets.only(left: 8),
+            Padding(
+              padding: const EdgeInsets.only(left: 8),
               child: CircleAvatar(
                 radius: 24,
-                backgroundColor: Color(0xFF151515),
+                backgroundColor: const Color(0xFF151515),
+                child: Text(
+                  userController.user!.username[0].toUpperCase(),
+                  style: Styles.body(context),
+                ),
               ),
             ),
           ],
@@ -141,20 +149,24 @@ class _UserReplyState extends State<UserReply> {
   }
 
   bool processNextQuestion(String domain) {
-    chatController.updateDomains(domain);
+    chatController.answers.add(domain);
 
     if (chatController.questionPool[domain] != null) {
-      // print('First');
       chatController.questionToAsk =
           chatController.questionPool[domain]!.question;
+
+      chatController.questionsAnswered.add(chatController.questionToAsk);
+
       return true;
     } else {
       if (chatController
               .questionPool[chatController.questionToAsk]!.nextQuestion !=
           null) {
-        // print('Second');
         chatController.questionToAsk = chatController
             .questionPool[chatController.questionToAsk]!.nextQuestion!;
+
+        chatController.questionsAnswered.add(chatController.questionToAsk);
+
         return true;
       } else {
         return false;

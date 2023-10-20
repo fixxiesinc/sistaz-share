@@ -28,7 +28,7 @@ class _HeaderState extends State<Header> {
                   alignment: Alignment.topCenter,
                   color: Colors.black,
                   padding: EdgeInsets.symmetric(
-                    horizontal: isMobile ? 20.0 : 60.0,
+                    horizontal: Doubles.marginX(context),
                     vertical: isMobile
                         ? 16.0
                         : MediaQuery.of(context).size.height * 0.034,

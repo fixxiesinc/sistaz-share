@@ -32,18 +32,17 @@ class LastBody extends StatelessWidget {
                 ),
                 const SizedBox(height: 20.0),
                 Link(
-                  uri: Uri.parse('/${Routes.joinUs}'),
+                  uri: Uri.parse('/${Routes.welcome}'),
                   builder: (context, followLink) {
                     return Button(
-                      label: 'READ & TELL STORIES',
-                      onPressed: () => followLink!(),
-                      paddingBlock: 16,
-                      paddingInline: 24,
-                      textStyle: Theme.of(context)
+                        label: 'READ & TELL STORIES',
+                        onPressed: () => followLink!(),
+                        paddingBlock: 16,
+                        paddingInline: 24,
+                        textStyle: Theme.of(context)
                             .textTheme
                             .labelLarge!
-                            .copyWith(letterSpacing: 0.5)
-                    );
+                            .copyWith(letterSpacing: 0.5));
                   },
                 ),
                 const SizedBox(height: 60.0),
