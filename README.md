@@ -1,5 +1,4 @@
-### Description
-Sistaz Share coming soon page.
+A medium of unbounded storytelling for women who are discovering the world and themselves in the process
 
 <br>
 
