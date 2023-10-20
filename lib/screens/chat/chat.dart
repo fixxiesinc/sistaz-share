@@ -1,6 +1,4 @@
-// ignore: avoid_web_libraries_in_flutter
-import 'dart:html' as html;
-
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sistaz_share_web/exports.dart';
 
@@ -35,56 +33,79 @@ class _ChatPageState extends State<ChatPage> {
       color: Colors.black,
       title: 'Chat | Sistaz Share',
       child: Scaffold(
-        body: Column(
-          children: [
-            Expanded(
-              child: SingleChildScrollView(
-                padding: EdgeInsets.all(Doubles.marginX(context)),
-                child: Obx(() {
-                  return SeparatedColumn(
-                    separatorBuilder: () => const Gap(20),
-                    children:
-                        List.generate(chatController.chats.length, (index) {
-                      return chatController.chats[index];
-                    }),
-                  );
-                }),
-              ),
-            ),
+        body: FutureBuilder<Counsellor?>(
+            future: DatabaseService.fetchCounsellor(
+                userController.user!.preferredCounsellor),
+            builder: (context, snapshot) {
+              if (!snapshot.hasData) {
+                return const Center(child: CupertinoActivityIndicator());
+              }
 
-            // text field
-            Obx(() {
-              return chatController.showKeyboard.value
-                  ? const Entry(
-                      opacity: 0,
-                      yOffset: 200,
-                      curve: Curves.easeOutCubic,
-                      child: TextBox(),
-                    )
-                  : const SizedBox.shrink();
-            }),
+              if (snapshot.data == null) {
+                return Center(
+                  child: Text(
+                    'Unable to fetch counsellor at this time',
+                    style: Styles.body(context),
+                  ),
+                );
+              }
 
-            // restart session button
-            Obx(() {
-              return chatController.showChatActionButtons.value
-                  ? Entry(
-                      opacity: 0,
-                      yOffset: 200,
-                      delay: const Duration(milliseconds: 2000),
-                      curve: Curves.easeOutCubic,
-                      child: Padding(
-                        padding: const EdgeInsets.only(bottom: 30, top: 12),
-                        child: Button(
-                          label: 'Click here to restart session',
-                          labelSize: 16,
-                          onPressed: () => html.window.location.reload(),
-                        ),
-                      ),
-                    )
-                  : const SizedBox.shrink();
+              ChatController.counsellor = snapshot.data!;
+
+              return Stack(
+                alignment: Alignment.bottomCenter,
+                children: [
+                  ListView(
+                    padding: EdgeInsets.all(Doubles.marginX(context)),
+                    children: [
+                      Obx(() {
+                        return SeparatedColumn(
+                          separatorBuilder: () => const Gap(20),
+                          children: List.generate(chatController.chats.length,
+                              (index) {
+                            return chatController.chats[index];
+                          }),
+                        );
+                      }),
+                    ],
+                  ),
+
+                  // text field
+                  Obx(() {
+                    return chatController.showKeyboard.value
+                        ? const Entry(
+                            opacity: 0,
+                            yOffset: 200,
+                            curve: Curves.easeOutCubic,
+                            child: TextBox(),
+                          )
+                        : const SizedBox.shrink();
+                  }),
+
+                  // restart session button
+                  Obx(() {
+                    return chatController.showChatActionButtons.value
+                        ? Entry(
+                            opacity: 0,
+                            yOffset: 200,
+                            curve: Curves.easeOutCubic,
+                            delay: const Duration(milliseconds: 2000),
+                            child: Padding(
+                              padding: const EdgeInsets.only(bottom: 30),
+                              child: Button(
+                                label: 'Click here to restart session',
+                                labelSize: 16,
+                                onPressed: () {
+
+                                },
+                              ),
+                            ),
+                          )
+                        : const SizedBox.shrink();
+                  }),
+                ],
+              );
             }),
-          ],
-        ),
       ),
     );
   }
