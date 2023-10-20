@@ -4,7 +4,9 @@ import 'package:sistaz_share_web/exports.dart';
 class Routes {
   static const String chat = 'chat';
   static const String contact = 'contact';
-  static const String joinUs = 'join-us';
+  static const String welcome = 'welcome';
+  static const String login = 'login';
+  static const String register = 'register';
   static const String ourStory = 'our-story';
   static const String inviteAFriend = 'invite-a-friend';
   static const String becomeACounselor = 'become-a-counsellor';
@@ -20,12 +22,12 @@ final router = GoRouter(
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
       builder: (context, state, child) {
-        // return Layout(child: child);
-        return Obx(() {
-          return viewController.splashPlayed.value
-              ? Layout(child: child)
-              : const Splash();
-        });
+        return Layout(child: child);
+        // return Obx(() {
+        //   return viewController.splashPlayed.value
+        //       ? Layout(child: child)
+        //       : const Splash();
+        // });
       },
       routes: [
         // latest
@@ -49,15 +51,38 @@ final router = GoRouter(
           },
         ),
 
-        // join us
+        // welcome
         GoRoute(
-          path: '/${Routes.joinUs}',
-          name: Routes.joinUs,
+          path: '/${Routes.welcome}',
+          name: Routes.welcome,
           parentNavigatorKey: _shellNavigatorKey,
           pageBuilder: (context, state) {
             viewController.currentPage('Join Us');
             return const NoTransitionPage(child: JoinUs());
           },
+          routes: [
+            // login
+            GoRoute(
+              path: Routes.login,
+              name: Routes.login,
+              parentNavigatorKey: _shellNavigatorKey,
+              pageBuilder: (context, state) {
+                viewController.currentPage('Join Us');
+                return const NoTransitionPage(child: Login());
+              },
+            ),
+
+            // register
+            GoRoute(
+              path: Routes.register,
+              name: Routes.register,
+              parentNavigatorKey: _shellNavigatorKey,
+              pageBuilder: (context, state) {
+                viewController.currentPage('Join Us');
+                return const NoTransitionPage(child: Register());
+              },
+            ),
+          ],
         ),
 
         // become a counsellor
@@ -86,10 +111,22 @@ final router = GoRouter(
         GoRoute(
           path: '/${Routes.chat}',
           name: Routes.chat,
+          redirect: (context, state) {
+            if (userController.user != null) {
+              return state.path;
+            } else {
+              return '/${Routes.welcome}';
+            }
+          },
           parentNavigatorKey: _shellNavigatorKey,
           pageBuilder: (context, state) {
             viewController.currentPage('');
             return const NoTransitionPage(child: ChatPage());
+            // if (userController.user != null) {
+            //   return const NoTransitionPage(child: ChatPage());
+            // }
+
+            // return const NoTransitionPage(child: Home());
           },
         ),
       ],
