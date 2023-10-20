@@ -12,7 +12,7 @@ class GenderSelect extends StatefulWidget {
 class _GenderSelectState extends State<GenderSelect> {
   String? selectedOption;
 
-  final List<String> options = ['Male', 'Female', 'Non-binary'];
+  final List<String> options = ['Female', 'Male', 'Non-binary'];
 
   @override
   Widget build(BuildContext context) {
