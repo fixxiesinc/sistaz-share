@@ -52,60 +52,68 @@ class _ChatPageState extends State<ChatPage> {
 
               ChatController.counsellor = snapshot.data!;
 
-              return Stack(
-                alignment: Alignment.bottomCenter,
-                children: [
-                  ListView(
-                    padding: EdgeInsets.all(Doubles.marginX(context)),
-                    children: [
-                      Obx(() {
-                        return SeparatedColumn(
-                          separatorBuilder: () => const Gap(20),
-                          children: List.generate(chatController.chats.length,
-                              (index) {
-                            return chatController.chats[index];
-                          }),
-                        );
-                      }),
-                    ],
-                  ),
+              return ResponsiveBuilder(builder: (context, sizingInformation) {
+                bool isMobile = sizingInformation.isMobile;
+                return Stack(
+                  alignment: Alignment.bottomCenter,
+                  children: [
+                    ListView(
+                      padding: EdgeInsets.symmetric(
+                        horizontal: Doubles.marginX(context),
+                        vertical: isMobile ? 20 : 40,
+                      ),
+                      children: [
+                        Obx(() {
+                          return SeparatedColumn(
+                            separatorBuilder: () => const Gap(20),
+                            children: List.generate(chatController.chats.length,
+                                (index) {
+                              return chatController.chats[index];
+                            }),
+                          );
+                        }),
+                      ],
+                    ),
 
-                  // text field
-                  Obx(() {
-                    return chatController.showKeyboard.value
-                        ? const Entry(
-                            opacity: 0,
-                            yOffset: 200,
-                            curve: Curves.easeOutCubic,
-                            child: TextBox(),
-                          )
-                        : const SizedBox.shrink();
-                  }),
+                    // text field
+                    Obx(
+                      () {
+                        return chatController.showKeyboard.value
+                            ? const Entry(
+                                opacity: 0,
+                                yOffset: 200,
+                                curve: Curves.easeOutCubic,
+                                child: TextBox(),
+                              )
+                            : const SizedBox.shrink();
+                      },
+                    ),
 
-                  // restart session button
-                  Positioned(
-                    right: Doubles.marginX(context) + 52,
-                    child: Obx(() {
-                      return chatController.showChatActionButtons.value
-                          ? Entry(
-                              opacity: 0,
-                              yOffset: 200,
-                              curve: Curves.easeOutCubic,
-                              delay: const Duration(milliseconds: 2000),
-                              child: Padding(
-                                padding: const EdgeInsets.only(bottom: 30),
-                                child: Button(
-                                  label: 'Click here to restart session',
-                                  labelSize: 16,
-                                  onPressed: () {},
+                    // restart session button
+                    Positioned(
+                      right: Doubles.marginX(context) + 52,
+                      child: Obx(() {
+                        return chatController.showChatActionButtons.value
+                            ? Entry(
+                                opacity: 0,
+                                yOffset: 200,
+                                curve: Curves.easeOutCubic,
+                                delay: const Duration(milliseconds: 2000),
+                                child: Padding(
+                                  padding: const EdgeInsets.only(bottom: 30),
+                                  child: Button(
+                                    label: 'Click here to restart session',
+                                    labelSize: 16,
+                                    onPressed: () {},
+                                  ),
                                 ),
-                              ),
-                            )
-                          : const SizedBox.shrink();
-                    }),
-                  ),
-                ],
-              );
+                              )
+                            : const SizedBox.shrink();
+                      }),
+                    ),
+                  ],
+                );
+              });
             }),
       ),
     );

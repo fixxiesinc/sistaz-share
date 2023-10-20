@@ -19,134 +19,143 @@ class _UserReplyState extends State<UserReply> {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Container(),
-        Row(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // user response message
-            Flexible(
-              child: Entry(
-                opacity: 0,
-                delay: const Duration(milliseconds: 1500),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.end,
-                  children: [
-                    ChatBox(
-                      radius: 20,
-                      color: const Color(0xFF151515),
-                      borderColor: const Color(0xFF333333),
-                      onClick: null,
-                      content: Padding(
-                        padding: const EdgeInsets.symmetric(vertical: 4),
-                        child: SeparatedColumn(
-                          separatorBuilder: () => const Gap(14),
-                          mainAxisSize: MainAxisSize.min,
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          children:
-                              List.generate(widget.options.length, (index) {
-                            bool selected =
-                                selectedOption == widget.options[index];
+        Flexible(
+          child: Row(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // user response message
+              Flexible(
+                child: Entry(
+                  opacity: 0,
+                  delay: const Duration(milliseconds: 1500),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.end,
+                    children: [
+                      ChatBox(
+                        radius: 20,
+                        color: const Color(0xFF151515),
+                        borderColor: const Color(0xFF333333),
+                        onClick: null,
+                        content: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 4),
+                          child: SeparatedColumn(
+                            separatorBuilder: () => const Gap(14),
+                            mainAxisSize: MainAxisSize.min,
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            children:
+                                List.generate(widget.options.length, (index) {
+                              bool selected =
+                                  selectedOption == widget.options[index];
 
-                            return InkWell(
-                              splashColor: Colors.transparent,
-                              hoverColor: Colors.transparent,
-                              highlightColor: Colors.transparent,
-                              onTap: () async {
-                                setState(() {
-                                  selectedOption = widget.options[index];
-                                });
+                              return InkWell(
+                                splashColor: Colors.transparent,
+                                hoverColor: Colors.transparent,
+                                highlightColor: Colors.transparent,
+                                onTap: () async {
+                                  setState(() {
+                                    selectedOption = widget.options[index];
+                                  });
 
-                                if (chatController.chatStarted) {
-                                  var res = processNextQuestion(
-                                      widget.options[index]);
-                                  if (res) {
-                                    processNextChat();
+                                  if (chatController.chatStarted) {
+                                    var res = processNextQuestion(
+                                        widget.options[index]);
+                                    if (res) {
+                                      processNextChat();
+                                    } else {
+                                      chatController.questionToAsk =
+                                          'Do you want to say more?';
+
+                                      chatController.chats.add(const AIReply());
+                                      await Future.delayed(
+                                        const Duration(milliseconds: 1500),
+                                      );
+
+                                      chatController.chats.add(
+                                        const WantToSayMore(),
+                                      );
+                                    }
                                   } else {
-                                    chatController.questionToAsk =
-                                        'Do you want to say more?';
+                                    chatController.chatStarted = true;
 
-                                    chatController.chats.add(const AIReply());
-                                    await Future.delayed(
-                                      const Duration(milliseconds: 1500),
-                                    );
+                                    processNextQuestion(widget.options[index]);
 
-                                    chatController.chats.add(
-                                      const WantToSayMore(),
-                                    );
+                                    chatController
+                                        .setDomain(widget.options[index]);
+
+                                    processNextChat();
                                   }
-                                } else {
-                                  chatController.chatStarted = true;
 
-                                  processNextQuestion(widget.options[index]);
-
-                                  chatController
-                                      .setDomain(widget.options[index]);
-
-                                  processNextChat();
-                                }
-
-                                if (widget.onSelect != null) {
-                                  widget.onSelect!();
-                                }
-                              },
-                              child: Container(
-                                color: Colors.transparent,
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    Flexible(
-                                      child: Text(
-                                        widget.options[index],
-                                        style: Styles.body(context).textColor(
-                                          Colors.white,
+                                  if (widget.onSelect != null) {
+                                    widget.onSelect!();
+                                  }
+                                },
+                                child: Container(
+                                  color: Colors.transparent,
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      Flexible(
+                                        child: Text(
+                                          widget.options[index],
+                                          textAlign: TextAlign.end,
+                                          style: Styles.body(context).textColor(
+                                            Colors.white,
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                    const Gap(12),
-                                    Icon(
-                                      selected
-                                          ? Icons.circle
-                                          : Icons.circle_outlined,
-                                      size: 16,
-                                      color: selected
-                                          ? Colors.orange
-                                          : Colors.white70,
-                                    )
-                                  ],
+                                      const Gap(12),
+                                      Icon(
+                                        selected
+                                            ? Icons.circle
+                                            : Icons.circle_outlined,
+                                        size: 16,
+                                        color: selected
+                                            ? Colors.orange
+                                            : Colors.white70,
+                                      )
+                                    ],
+                                  ),
                                 ),
-                              ),
-                            );
-                          }),
+                              );
+                            }),
+                          ),
                         ),
                       ),
-                    ),
 
-                    const Gap(12),
+                      const Gap(12),
 
-                    // tell me more
-                    const TellMeMoreButton()
-                  ],
+                      // tell me more
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Container(),
+                          const TellMeMoreButton(),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
 
-            // user avatar
-            Padding(
-              padding: const EdgeInsets.only(left: 8),
-              child: CircleAvatar(
-                radius: 24,
-                backgroundColor: const Color(0xFF151515),
-                child: ClipRRect(
-                    borderRadius: BorderRadius.circular(1000),
-                    child: RandomAvatar(
-                      userController.user!.username,
-                      trBackground: true,
-                      fit: BoxFit.cover,
-                    ),
-                  )
+              // user avatar
+              const Padding(
+                padding: EdgeInsets.only(left: 8),
+                child: CircleAvatar(
+                  radius: 24,
+                  backgroundColor: Color(0xFF151515),
+                  // child: ClipRRect(
+                  //     borderRadius: BorderRadius.circular(1000),
+                  //     child: RandomAvatar(
+                  //       userController.user!.username,
+                  //       trBackground: true,
+                  //       fit: BoxFit.cover,
+                  //     ),
+                  //   )
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ],
     );

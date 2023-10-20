@@ -36,70 +36,82 @@ class _TextBoxState extends State<TextBox> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 30),
-      decoration: BoxDecoration(
-        color: Colors.black,
-        borderRadius: BorderRadius.circular(50),
-      ),
-      child: FractionallySizedBox(
-        widthFactor: 0.5,
-        child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(50),
-            border: Border.all(color: const Color(0xFF333333)),
-          ),
-          child: Row(
-            children: [
-              Expanded(
-                child: LimitedBox(
-                  maxHeight: 200,
-                  child: Padding(
-                    padding: EdgeInsets.only(left: text.length > 30 ? 12 : 0),
-                    child: TextField(
-                      autofocus: true,
-                      maxLines: null,
-                      controller: controller,
-                      cursorColor: Colors.orange,
-                      style: Styles.body(context),
-                      onChanged: (value) => setState(() => text = value),
-                      decoration: InputDecoration.collapsed(
-                        hintText: 'Type Here ...',
-                        hintStyle: Styles.body(context).textColor(Colors.grey),
+    return ResponsiveBuilder(builder: (context, sizingInformation) {
+      bool isMobile = sizingInformation.isMobile;
+      bool isDesktop = sizingInformation.isDesktop;
+      return Container(
+        margin: EdgeInsets.only(
+          bottom: 30,
+          left: isMobile ? Doubles.marginX(context) : 0,
+          right: isMobile ? Doubles.marginX(context) : 0,
+        ),
+        decoration: BoxDecoration(
+          color: Colors.black,
+          borderRadius: BorderRadius.circular(50),
+        ),
+        child: FractionallySizedBox(
+          widthFactor: isDesktop ? 0.5 : null,
+          child: Container(
+            padding: EdgeInsets.symmetric(
+              vertical: isMobile ? 4 : 10,
+              horizontal: isMobile ? 8 : 14,
+            ),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              border: Border.all(color: const Color(0xFF333333)),
+            ),
+            child: Row(
+              children: [
+                Expanded(
+                  child: LimitedBox(
+                    maxHeight: isMobile ? 100 : 200,
+                    child: Padding(
+                      padding: EdgeInsets.only(left: text.length > 30 ? 12 : 0),
+                      child: TextField(
+                        autofocus: true,
+                        maxLines: null,
+                        controller: controller,
+                        cursorColor: Colors.orange,
+                        style: Styles.body(context),
+                        onChanged: (value) => setState(() => text = value),
+                        decoration: InputDecoration.collapsed(
+                          hintText: 'Type Here ...',
+                          hintStyle:
+                              Styles.body(context).textColor(Colors.grey),
+                        ),
                       ),
                     ),
                   ),
                 ),
-              ),
-              const Gap(12),
-              InkWell(
-                highlightColor: Colors.transparent,
-                splashColor: Colors.transparent,
-                onTap: () async {
-                  chatController.typedMessage = text;
+                const Gap(12),
+                InkWell(
+                  highlightColor: Colors.transparent,
+                  splashColor: Colors.transparent,
+                  onTap: () async {
+                    chatController.typedMessage = text;
 
-                  addMessageToChat();
+                    addMessageToChat();
 
-                  chatController.showKeyboard(false);
+                    chatController.showKeyboard(false);
 
-                  chatController.processChatClosure();
-                },
-                child: CircleAvatar(
-                  backgroundColor:
-                      text.isEmpty ? const Color(0xFF333333) : Colors.white,
-                  child: Icon(
-                    CupertinoIcons.paperplane,
-                    size: 20,
-                    color: text.isEmpty ? Colors.grey : Colors.black,
+                    chatController.processChatClosure();
+                  },
+                  child: CircleAvatar(
+                    backgroundColor:
+                        text.isEmpty ? const Color(0xFF333333) : Colors.white,
+                    child: Icon(
+                      CupertinoIcons.paperplane,
+                      size: 20,
+                      color: text.isEmpty ? Colors.grey : Colors.black,
+                    ),
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
-      ),
-    );
+      );
+    });
   }
 
   void addMessageToChat() {
@@ -125,19 +137,19 @@ class _TextBoxState extends State<TextBox> {
         ),
 
         // user avatar
-        Padding(
-          padding: const EdgeInsets.only(left: 8),
+        const Padding(
+          padding: EdgeInsets.only(left: 8),
           child: CircleAvatar(
             radius: 24,
-            backgroundColor: const Color(0xFF151515),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(1000),
-              child: RandomAvatar(
-                userController.user!.username,
-                trBackground: true,
-                fit: BoxFit.cover,
-              ),
-            ),
+            backgroundColor: Color(0xFF151515),
+            // child: ClipRRect(
+            //   borderRadius: BorderRadius.circular(1000),
+            //   child: RandomAvatar(
+            //     userController.user!.username,
+            //     trBackground: true,
+            //     fit: BoxFit.cover,
+            //   ),
+            // ),
           ),
         ),
       ],

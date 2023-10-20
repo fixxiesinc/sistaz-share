@@ -13,12 +13,12 @@ class AIReply extends StatelessWidget {
           child: CircleAvatar(
             radius: 24,
             backgroundColor: const Color(0xFF151515),
-            child: ClipRRect(
-              child: Image.network(
-                ChatController.counsellor!.avatarUrl,
-                fit: BoxFit.cover,
-              ),
-            ),
+            // child: ClipRRect(
+            //   child: Image.network(
+            //     ChatController.counsellor!.avatarUrl,
+            //     fit: BoxFit.cover,
+            //   ),
+            // ),
           ),
         ),
         Expanded(
