@@ -136,10 +136,14 @@ class _UserReplyState extends State<UserReply> {
               child: CircleAvatar(
                 radius: 24,
                 backgroundColor: const Color(0xFF151515),
-                child: Text(
-                  userController.user!.username[0].toUpperCase(),
-                  style: Styles.body(context),
-                ),
+                child: ClipRRect(
+                    borderRadius: BorderRadius.circular(1000),
+                    child: RandomAvatar(
+                      userController.user!.username,
+                      trBackground: true,
+                      fit: BoxFit.cover,
+                    ),
+                  )
               ),
             ),
           ],

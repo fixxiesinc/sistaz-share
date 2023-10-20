@@ -19,7 +19,6 @@ class _MenuState extends State<Menu> {
   ];
 
   final List<String> items = [
-    'Home',
     'Join Us',
     'Become a Counsellor',
     'Our Story',
@@ -59,6 +58,19 @@ class _MenuState extends State<Menu> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
+                          userController.user == null
+                              ? const SizedBox.shrink()
+                              : Padding(
+                                  padding: EdgeInsets.only(
+                                    bottom: isMobile
+                                        ? MediaQuery.of(context).size.height *
+                                            0.05
+                                        : MediaQuery.of(context).size.height *
+                                            0.04,
+                                  ),
+                                  child: const ProfileTile(),
+                                ),
+
                           // menu list
                           SeparatedColumn(
                             mainAxisSize: MainAxisSize.min,
@@ -104,8 +116,8 @@ class _MenuState extends State<Menu> {
                           ),
 
                           SizedBox(
-                              height:
-                                  MediaQuery.of(context).size.height * 0.08),
+                            height: MediaQuery.of(context).size.height * 0.08,
+                          ),
                         ],
                       ),
 

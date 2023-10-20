@@ -83,26 +83,27 @@ class _ChatPageState extends State<ChatPage> {
                   }),
 
                   // restart session button
-                  Obx(() {
-                    return chatController.showChatActionButtons.value
-                        ? Entry(
-                            opacity: 0,
-                            yOffset: 200,
-                            curve: Curves.easeOutCubic,
-                            delay: const Duration(milliseconds: 2000),
-                            child: Padding(
-                              padding: const EdgeInsets.only(bottom: 30),
-                              child: Button(
-                                label: 'Click here to restart session',
-                                labelSize: 16,
-                                onPressed: () {
-
-                                },
+                  Positioned(
+                    right: Doubles.marginX(context) + 52,
+                    child: Obx(() {
+                      return chatController.showChatActionButtons.value
+                          ? Entry(
+                              opacity: 0,
+                              yOffset: 200,
+                              curve: Curves.easeOutCubic,
+                              delay: const Duration(milliseconds: 2000),
+                              child: Padding(
+                                padding: const EdgeInsets.only(bottom: 30),
+                                child: Button(
+                                  label: 'Click here to restart session',
+                                  labelSize: 16,
+                                  onPressed: () {},
+                                ),
                               ),
-                            ),
-                          )
-                        : const SizedBox.shrink();
-                  }),
+                            )
+                          : const SizedBox.shrink();
+                    }),
+                  ),
                 ],
               );
             }),
