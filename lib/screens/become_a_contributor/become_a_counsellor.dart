@@ -41,68 +41,70 @@ class _BecomeACounsellorState extends State<BecomeACounsellor> {
           return ListView(
             children: [
               // we publish stories
-              ColoredBox(
-                color: Colors.white,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: isMobile
-                          ? MediaQuery.of(context).size.height * 0.015
-                          : MediaQuery.of(context).size.height * 0.05,
-                    ),
-                    Center(
-                      child: FractionallySizedBox(
-                        widthFactor: isMobile ? 1 : 0.9,
-                        child: RichText(
-                          textAlign: TextAlign.center,
-                          text: TextSpan(
-                            text:
-                                'We publish stories and perspectives on educating and',
-                            style: Styles.h1(context).copyWith(height: 1.2),
-                            children: [
-                              TextSpan(
-                                text: ' empowering',
-                                style: Styles.h1(context),
-                              ),
-                              TextSpan(
-                                text: ' women',
-                                style: Styles.h1(context).copyWith(
-                                  fontStyle: FontStyle.italic,
-                                ),
-                              ),
-                              TextSpan(
-                                text: '\n\n${Demoji.rainbow}',
-                                style: Styles.h1(context)
-                                    .copyWith(height: isMobile ? 0.6 : 0.6),
-                              ),
-                            ],
-                          ),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(
+                    height: isMobile
+                        ? MediaQuery.of(context).size.height * 0.015
+                        : MediaQuery.of(context).size.height * 0.05,
+                  ),
+                  Center(
+                    child: FractionallySizedBox(
+                      widthFactor: isMobile ? 1 : 0.9,
+                      child: RichText(
+                        textAlign: TextAlign.center,
+                        text: TextSpan(
+                          text:
+                              'We publish stories and perspectives on educating and',
+                          style: Styles.h1(context)
+                              .textColor(Colors.white)
+                              .copyWith(height: 1.2),
+                          children: [
+                            TextSpan(
+                              text: ' empowering',
+                              style: Styles.h1(context).textColor(Colors.white),
+                            ),
+                            TextSpan(
+                              text: ' women',
+                              style: Styles.h1(context)
+                                  .textColor(Colors.white)
+                                  .copyWith(
+                                    fontStyle: FontStyle.italic,
+                                  ),
+                            ),
+                            TextSpan(
+                              text: '\n\n${Demoji.rainbow}',
+                              style: Styles.h1(context)
+                                  .textColor(Colors.white)
+                                  .copyWith(height: isMobile ? 0.6 : 0.6),
+                            ),
+                          ],
                         ),
                       ),
                     ),
+                  ),
 
-                    // vertical divider
-                    Center(
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: isMobile
-                              ? MediaQuery.of(context).size.height * 0.06
-                              : MediaQuery.of(context).size.height * 0.08,
-                        ),
-                        child: SizedBox(
-                          height: isMobile
-                              ? MediaQuery.of(context).size.height * 0.4
-                              : MediaQuery.of(context).size.height * 0.3,
-                          child: const VerticalDivider(
-                            thickness: 1.2,
-                            color: Colors.black,
-                          ),
+                  // vertical divider
+                  Center(
+                    child: Padding(
+                      padding: EdgeInsets.symmetric(
+                        vertical: isMobile
+                            ? MediaQuery.of(context).size.height * 0.06
+                            : MediaQuery.of(context).size.height * 0.08,
+                      ),
+                      child: SizedBox(
+                        height: isMobile
+                            ? MediaQuery.of(context).size.height * 0.4
+                            : MediaQuery.of(context).size.height * 0.3,
+                        child: const VerticalDivider(
+                          thickness: 1.2,
+                          color: Colors.white,
                         ),
                       ),
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
 
               // wave, faqs, sign up button

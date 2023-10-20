@@ -113,20 +113,15 @@ final router = GoRouter(
           name: Routes.chat,
           redirect: (context, state) {
             if (userController.user != null) {
-              return state.path;
+              return '/${Routes.chat}';
             } else {
               return '/${Routes.welcome}';
             }
           },
           parentNavigatorKey: _shellNavigatorKey,
           pageBuilder: (context, state) {
-            viewController.currentPage('');
+            viewController.currentPage('Chat');
             return const NoTransitionPage(child: ChatPage());
-            // if (userController.user != null) {
-            //   return const NoTransitionPage(child: ChatPage());
-            // }
-
-            // return const NoTransitionPage(child: Home());
           },
         ),
       ],

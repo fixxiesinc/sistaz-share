@@ -233,7 +233,7 @@ class ChatController extends GetxController {
 
   void processChatClosure() async {
     questionToAsk =
-        'Alright Janet, we will analyze your inputs and get back to you shortly';
+        'Alright ${userController.user!.username}, we will analyze your inputs and get back to you shortly';
     chats.add(const AIReply());
     showChatActionButtons(true);
 

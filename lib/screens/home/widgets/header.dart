@@ -1,5 +1,4 @@
 import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:sistaz_share_web/exports.dart';
 
@@ -58,23 +57,30 @@ class _HeaderState extends State<Header> {
                       ),
 
                       // menu button
-                      InkWell(
-                        hoverColor: Colors.transparent,
-                        highlightColor: Colors.transparent,
-                        onTap: () {
-                          menuProvider.menuOpen.value =
-                              !menuProvider.menuOpen.value;
-                        },
-                        child: Text(
-                          menuProvider.menuOpen.value ? 'CLOSE' : 'MENU',
-                          style: TextStyle(
-                            letterSpacing: 1.5,
-                            fontFamily: Fonts.anton,
-                            fontSize: isMobile ? 14.0 : 16.0,
-                            color: Colors.white,
-                          ),
-                        ),
-                      ),
+                      viewController.currentPage.value == 'Chat'
+                          ? InkWell(
+                              splashColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () {},
+                              child: const ProfileTile(),
+                            )
+                          : InkWell(
+                              hoverColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
+                              onTap: () {
+                                menuProvider.menuOpen.value =
+                                    !menuProvider.menuOpen.value;
+                              },
+                              child: Text(
+                                menuProvider.menuOpen.value ? 'CLOSE' : 'MENU',
+                                style: TextStyle(
+                                  letterSpacing: 1.5,
+                                  fontFamily: Fonts.anton,
+                                  fontSize: isMobile ? 14.0 : 16.0,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
                     ],
                   ),
                 );
