@@ -88,11 +88,15 @@ class _WantToSayMoreState extends State<WantToSayMore> {
             ),
 
             // user avatar
-            const Padding(
-              padding: EdgeInsets.only(left: 8),
+            Padding(
+              padding: const EdgeInsets.only(left: 8),
               child: CircleAvatar(
                 radius: 24,
-                backgroundColor: Color(0xFF151515),
+                backgroundColor: const Color(0xFF151515),
+                child: Text(
+                  userController.user!.username[0].toUpperCase(),
+                  style: Styles.body(context),
+                ),
               ),
             ),
           ],

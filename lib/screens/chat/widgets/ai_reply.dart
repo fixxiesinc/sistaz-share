@@ -14,7 +14,10 @@ class AIReply extends StatelessWidget {
             radius: 24,
             backgroundColor: const Color(0xFF151515),
             child: ClipRRect(
-              child: Image.asset(Images.avatar1, fit: BoxFit.cover),
+              child: Image.network(
+                ChatController.counsellor!.avatarUrl,
+                fit: BoxFit.cover,
+              ),
             ),
           ),
         ),
