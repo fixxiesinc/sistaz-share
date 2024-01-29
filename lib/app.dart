@@ -21,15 +21,17 @@ class App extends StatelessWidget {
           ),
         ),
       ),
-      child: MaterialApp.router(
-        routerConfig: router,
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          fontFamily: Fonts.mazzard,
-          scaffoldBackgroundColor: Colors.black,
-          appBarTheme: const AppBarTheme(elevation: 0),
-        ),
-      ),
+      child: ResponsiveApp(builder: (_) {
+        return MaterialApp.router(
+          routerConfig: router,
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            fontFamily: Fonts.mazzard,
+            scaffoldBackgroundColor: Colors.black,
+            appBarTheme: const AppBarTheme(elevation: 0),
+          ),
+        );
+      }),
     );
   }
 }
