@@ -22,12 +22,12 @@ final router = GoRouter(
     ShellRoute(
       navigatorKey: _shellNavigatorKey,
       builder: (context, state, child) {
-        return Layout(child: child);
-        // return Obx(() {
-        //   return viewController.splashPlayed.value
-        //       ? Layout(child: child)
-        //       : const Splash();
-        // });
+        // return Layout(child: child);
+        return Obx(() {
+          return viewController.splashPlayed.value
+              ? Layout(child: child)
+              : const Splash();
+        });
       },
       routes: [
         // latest
@@ -36,7 +36,13 @@ final router = GoRouter(
           name: 'home',
           parentNavigatorKey: _shellNavigatorKey,
           pageBuilder: (context, state) {
-            return const NoTransitionPage(child: Home());
+            return NoTransitionPage(
+              child: Title(
+                color: Colors.black,
+                title: 'Sistz Share - Coming Soon',
+                child: const Home(),
+              ),
+            );
           },
         ),
 
