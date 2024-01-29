@@ -9,14 +9,14 @@ class Styles {
             height: 1.2,
             fontSize: 28.0,
             fontFamily: Fonts.mazzard,
-            fontWeight: FontWeight.w400,
-            color: color ?? Colors.black,
+            fontWeight: FontWeight.w300,
+            color: color ?? Colors.white,
           ),
       desktop: Theme.of(context).textTheme.displaySmall!.copyWith(
             height: 1.2,
             fontFamily: Fonts.mazzard,
             fontWeight: FontWeight.w300,
-            color: color ?? Colors.black,
+            color: color ?? Colors.white,
           ),
     );
   }
@@ -44,7 +44,6 @@ class Styles {
         tablet: 20,
         desktop: 20,
       ),
-      // letterSpacing: getValueForScreenType(context: context, mobile: 0.8),
     );
   }
 

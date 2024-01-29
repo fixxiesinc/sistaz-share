@@ -137,19 +137,19 @@ class _TextBoxState extends State<TextBox> {
         ),
 
         // user avatar
-        const Padding(
-          padding: EdgeInsets.only(left: 8),
+        Padding(
+          padding: const EdgeInsets.only(left: 8),
           child: CircleAvatar(
             radius: 24,
-            backgroundColor: Color(0xFF151515),
-            // child: ClipRRect(
-            //   borderRadius: BorderRadius.circular(1000),
-            //   child: RandomAvatar(
-            //     userController.user!.username,
-            //     trBackground: true,
-            //     fit: BoxFit.cover,
-            //   ),
-            // ),
+            backgroundColor: const Color(0xFF151515),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(1000),
+              child: RandomAvatar(
+                userController.user!.username,
+                trBackground: true,
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
         ),
       ],
