@@ -52,7 +52,7 @@ class _LoginState extends State<Login> {
                                 onChanged: (value) {
                                   FormController.username = value;
                                 },
-                                decoration: inputDecoration.copyWith(
+                                decoration: inputDecoration(context).copyWith(
                                   hintText: 'Username',
                                   hintStyle: Styles.body(context)
                                       .textColor(Colors.grey),
@@ -68,7 +68,7 @@ class _LoginState extends State<Login> {
                                   FormController.pincode = value;
                                 },
                                 onEditingComplete: () async => await login(),
-                                decoration: inputDecoration.copyWith(
+                                decoration: inputDecoration(context).copyWith(
                                   hintText: 'Pin code',
                                   hintStyle: Styles.body(context)
                                       .textColor(Colors.grey),
