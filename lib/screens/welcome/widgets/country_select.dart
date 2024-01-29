@@ -32,7 +32,7 @@ class _CountrySelectState extends State<CountrySelect> {
         ),
         value: selectedOption,
         style: Styles.body(context).copyWith(fontFamily: Fonts.mazzard),
-        decoration: inputDecoration.copyWith(
+        decoration: inputDecoration(context).copyWith(
           contentPadding: const EdgeInsets.only(left: 0),
         ),
         dropdownStyleData: DropdownStyleData(

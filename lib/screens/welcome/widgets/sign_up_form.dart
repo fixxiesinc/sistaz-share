@@ -33,7 +33,7 @@ class _SignUpFormState extends State<SignUpForm> {
                   onChanged: (value) {
                     FormController.username = value;
                   },
-                  decoration: inputDecoration.copyWith(
+                  decoration: inputDecoration(context).copyWith(
                     hintText: 'Pick a username',
                     hintStyle: Styles.body(context).textColor(Colors.grey),
                   ),
@@ -47,7 +47,7 @@ class _SignUpFormState extends State<SignUpForm> {
                   onChanged: (value) {
                     FormController.pincode = value;
                   },
-                  decoration: inputDecoration.copyWith(
+                  decoration: inputDecoration(context).copyWith(
                     hintText: 'Choose a pin code',
                     hintStyle: Styles.body(context).textColor(Colors.grey),
                   ),

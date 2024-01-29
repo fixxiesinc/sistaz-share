@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sistaz_share_web/exports.dart';
 
 enum AppView {
   none,
@@ -37,17 +38,20 @@ class Urls {
   static const String twitter = 'https://twitter.com/sistazshare';
 }
 
-InputDecoration inputDecoration = const InputDecoration(
-  enabledBorder: UnderlineInputBorder(
-    borderSide: BorderSide(color: Color(0xFF333333)),
-  ),
-  focusedBorder: UnderlineInputBorder(
-    borderSide: BorderSide(color: Color(0xFF333333)),
-  ),
-  disabledBorder: UnderlineInputBorder(
-    borderSide: BorderSide(color: Color(0xFF333333)),
-  ),
-);
+InputDecoration inputDecoration(BuildContext context) {
+  return InputDecoration(
+    filled: true,
+    contentPadding: EdgeInsets.all(
+      getValueForScreenType(context: context, mobile: 16, desktop: 20),
+    ),
+    fillColor: const Color(0xFF1f1f1f),
+    hintStyle: Styles.body(context).textColor(Colors.grey),
+    border: const OutlineInputBorder(
+      borderSide: BorderSide.none,
+      borderRadius: BorderRadius.zero,
+    ),
+  );
+}
 
 const countries = [
   "Afghanistan",
